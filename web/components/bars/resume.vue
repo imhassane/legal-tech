@@ -1,5 +1,5 @@
 <template>
-  <div class="md:flex-1 md:m-2">
+  <div class="p-3 md:flex-1 md:m-2">
     <div>
       <img class="object-cover w-full h-32" :src="cover" alt="couverture de l'actualité" />
     </div>

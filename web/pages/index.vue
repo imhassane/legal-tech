@@ -7,8 +7,8 @@
       <last-videos />
     </div>
     <div class="w-full bg-gray-200 mt-10 mb-10">
-      <div class="md:w-2/3 pt-10 pb-10 m-auto">
-        <h1 class="text-4xl font-bold mb-3">Vous cherchez un avocat ?</h1>
+      <div class="p-5 w-full md:w-2/3 pt-10 pb-10 m-auto">
+        <h1 class="text-2xl md:text-4xl font-bold mb-3">Vous cherchez un avocat ?</h1>
         <ul>
           <li class="ml-5 mb-2 font-bold">pour vous représenter</li>
           <li class="ml-5 mb-2 font-bold">pour des renseignements</li>

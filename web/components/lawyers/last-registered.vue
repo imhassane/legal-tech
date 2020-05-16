@@ -1,7 +1,7 @@
 <template>
-  <div class="md:w-4/5 m-auto mt-5 pt-2 pb-5">
+  <div class="w-full md:w-4/5 m-auto mt-5 pt-2 pb-5">
     <h3 class="font-bold mb-2">Derniers avocats inscrits > (200 au total)</h3>
-    <div class="flex justify-around" v-if="lawyers">
+    <div class="flex flex-wrap justify-between md:justify-around" v-if="lawyers">
       <lawyer-resume
         :avatar="l.avatar"
         :company="l.company"

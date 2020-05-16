@@ -1,7 +1,7 @@
 <template>
   <div class="md:w-4/5 m-auto mt-5 pt-2 pb-5">
     <h3 class="font-bold">Nos vidéos > (30 au total)</h3>
-    <div class="flex justify-around">
+    <div class="flex flex-wrap justify-around">
       <video-resume
         :title="v.title"
         :avatar="v.author.avatar"
