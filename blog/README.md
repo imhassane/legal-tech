@@ -1,22 +1,9 @@
 # blog
 
 > The legal tech&#39;s blog
+[Disponible ici](https://blog-legal-tech.netlify.app/) <br />
 
-## Build Setup
-
-``` bash
-# install dependencies
-$ npm run install
-
-# serve with hot reload at localhost:3000
-$ npm run dev
-
-# build for production and launch server
-$ npm run build
-$ npm run start
-
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Le blog de Legal tech est un espace fait pour toute personne souhaitant
+s'informer sur les questions de droits et justice. Les articles sont écrits
+par les avocats ou les administrateurs qui en general sont des avocats.
+<br />
