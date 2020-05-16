@@ -24,8 +24,8 @@
       <div class="flex justify-between mb-10 mt-10">
         <div class="flex-1 mr-4">
           <div class="p-5 border-1 rounded shadow" v-if="post.previous">
-            <p class="w-1/2 p-1 mb-1 bg-gray-300 rounded-sm font-bold text-gray-700">Article précedent</p>
-            <h1 class="text-medium font-bold mb-2">{{ post.previous.title }}</h1>
+            <p class="w-full md:w-1/2 font-semibold p-1 mb-1 rounded-sm md:font-bold text-gray-700">Précedent</p>
+            <h1 class="text-medium md:font-bold mb-2">{{ post.previous.title }}</h1>
             <p>
               <nuxt-link class="font-bold underline" :to="`/lire/${post.previous.id}/${post.previous.slug}`">lire</nuxt-link>
             </p>
@@ -34,9 +34,9 @@
         <div class="flex-1 text-right">
           <div class="p-5 border-1 rounded shadow" v-if="post.next">
             <p class="text-right mb-2 mt-1">
-              <span class="w-1/2 p-1 mb-1 bg-gray-300 rounded-sm font-bold text-gray-700">Article suivant</span>
+              <span class="w-full md:w-1/2 font-semibold p-1 mb-1 rounded-sm md:font-bold text-gray-700">Suivant</span>
             </p>
-            <h1 class="text-medium font-bold mb-2">{{ post.next.title }}</h1>
+            <h1 class="text-medium md:font-bold mb-2">{{ post.next.title }}</h1>
             <p>
               <nuxt-link class="font-bold underline" :to="`/lire/${post.next.id}/${post.next.slug}`">lire</nuxt-link>
             </p>
