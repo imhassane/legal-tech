@@ -1,0 +1,38 @@
+# import Comment from "./comments.graphql"
+
+enum ArticleType {
+    FOREIGN_ARTICLE
+    BLOG_ARTICLE
+    BAR_ARTICLE
+}
+
+enum ArticleState {
+    DRAFT
+    PENDING
+    DELETED
+    APPROVED
+}
+
+type Article @key(fields: "id") {
+    id: ID!
+    title: String!
+    content: String!
+    extract: String!
+    likes: Int!
+    views: Int!
+    cover: String!
+    slug: String!
+    readingTime: Int!
+    type: ArticleType!
+    state: ArticleState!
+    comments: [Comment!]!
+    author: User! @provides(fields: "id firstName lastName avatar")
+}
+
+extend type User @key(fields: "id"){
+    id: Int! @external
+    firstName: String! @external
+    lastName: String! @external
+    avatar: String @external
+    articles: [Article!]!
+}

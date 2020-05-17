@@ -1,0 +1,19 @@
+enum CommentState {
+    PENDING
+    APPROVED
+    DELETED
+}
+
+type CommentAuthor {
+    id: ID,
+    fullName: String!
+    email: String!
+}
+
+type Comment {
+    id: ID!
+    author: CommentAuthor!,
+    content: String!,
+    comments: [Comment!]!
+    state: CommentState!
+}
