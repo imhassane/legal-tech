@@ -2,10 +2,10 @@
   <div class="w-full m-auto md:w-4/5">
     <div class="m-auto">
       <last-post
-        :id="lastPosts.last.id",
+        :id="lastPosts.last.id"
         :title="lastPosts.last.title"
-        :cover="lastPosts.last.cover",
-        :author="lastPosts.last.author",
+        :cover="lastPosts.last.cover"
+        :author="lastPosts.last.author"
         :extract="lastPosts.last.extract"
         :readingTime="lastPosts.last.readingTime"
         :slug="lastPosts.last.slug"
@@ -13,10 +13,10 @@
     </div>
     <div class="m-auto flex justify-around flex-wrap">
       <post-resume
-        :id="p.id",
+        :id="p.id"
         :title="p.title"
-        :cover="p.cover",
-        :author="p.author",
+        :cover="p.cover"
+        :author="p.author"
         :extract="p.extract"
         :slug="p.slug"
         :readingTime="p.readingTime"
