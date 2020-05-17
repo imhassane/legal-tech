@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="l in laws" :key="l" class="flex justify-between pt-2 pb-2 pl-1 mb-2 border-b-2 border-gray-300">
+    <div v-for="l in laws" :key="l.id" class="flex justify-between pt-2 pb-2 pl-1 mb-2 border-b-2 border-gray-300">
       <p class="font-semibold">{{ l.code }}</p>
       <div>
         <span class="font-bold mr-2">{{ l.createdAt }}</span>
