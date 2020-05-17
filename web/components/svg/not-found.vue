@@ -1,6 +1,6 @@
 <template>
   <svg
-    class="h-64 m-auto"
+    class="w-64 h-64 m-auto"
     id="b7340503-1018-4be9-a649-13678c3e434c"
     data-name="Layer 1" xmlns="http://www.w3.org/2000/svg"
     width="939.00197" height="727" viewBox="0 0 939.00197 727">
