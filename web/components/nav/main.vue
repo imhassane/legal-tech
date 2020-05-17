@@ -2,7 +2,9 @@
   <div class="w-full p-5">
     <div class="md:w-2/3 m-auto md:flex">
       <div class="mb-3 flex-auto border-l-4 border-gray-500">
-        <h1 class="ml-2 uppercase text-xl font-bold">Legal Tech</h1>
+        <h1 class="ml-2 uppercase text-xl font-bold">
+          <nuxt-link to="/">Legal Tech</nuxt-link>
+        </h1>
       </div>
       <div class="flex-auto">
         <ul class="md:flex">

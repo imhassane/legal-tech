@@ -5,10 +5,10 @@
         <nuxt-link class="font-bold text-center text-sm" to="/videotheque">Vidéothèque</nuxt-link>
       </li>
       <li class="">
-        <nuxt-link class="font-bold text-center text-sm" to="/videotheque">Documents</nuxt-link>
+        <nuxt-link class="font-bold text-center text-sm" to="/documents">Documents</nuxt-link>
       </li>
       <li class="">
-        <nuxt-link class="font-bold text-center text-sm" to="/videotheque">Lois</nuxt-link>
+        <nuxt-link class="font-bold text-center text-sm" to="/lois">Lois</nuxt-link>
       </li>
     </ul>
   </div>
