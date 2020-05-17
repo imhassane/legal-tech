@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full md:w-3/5 m-auto p-1">
-    <ul class="flex justify-left">
+  <div class="p-1">
+    <ul class="md:w-3/5 m-auto pb-2 flex justify-left">
       <li class="mr-1">
         <nuxt-link class="text-indigo-800" to="/">Accueil</nuxt-link>
         <span class="text-gray-500">/</span>
@@ -10,6 +10,7 @@
         <span class="text-gray-500" v-if="l.to !== links[links.length - 1].to">/</span>
       </li>
     </ul>
+    <hr />
   </div>
 </template>
 

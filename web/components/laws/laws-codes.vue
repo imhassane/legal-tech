@@ -1,23 +1,12 @@
 <template>
   <div>
-    <table class="table-auto">
-      <thead>
-      <tr>
-        <th class="px-4 py-2">Code</th>
-        <th class="px-4 py-2">Année</th>
-        <th class="px-4 py-2">Voir</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr :key="l.id" v-for="l in laws">
-        <td class="border px-4 py-2 font-semibold">{{ l.code }}</td>
-        <td class="border px-4 py-2">{{ l.createdAt }}</td>
-        <td class="border px-4 py-2">
-          <nuxt-link :to="`/lois/${l.id}/${l.slug}`">Voir les articles</nuxt-link>
-        </td>
-      </tr>
-      </tbody>
-    </table>
+    <div v-for="l in laws" :key="l" class="flex justify-between pt-2 pb-2 pl-1 mb-2 border-b-2 border-gray-300">
+      <p class="font-semibold">{{ l.code }}</p>
+      <div>
+        <span class="font-bold mr-2">{{ l.createdAt }}</span>
+        <nuxt-link class="pl-2 pr-2 pt-1 pb-1 text-purple-900 font-bold" :to="`/lois/${l.id}/${l.slug}`">Afficher</nuxt-link>
+      </div>
+    </div>
   </div>
 </template>
 

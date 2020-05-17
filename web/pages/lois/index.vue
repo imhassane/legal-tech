@@ -4,7 +4,6 @@
       <p class="text-white font-semibold">Ces lois proviennent directement du ministère de la justice et sont donc authentiques</p>
     </div>
     <breadcrumb :links="routeLinks" />
-    <hr />
     <div class="m-auto md:w-3/5">
       <laws-codes />
     </div>
