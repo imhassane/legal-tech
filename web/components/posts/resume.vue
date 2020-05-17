@@ -1,6 +1,6 @@
 <template>
   <div class="w-1/2 md:w-1/4">
-    <div class="m-1 border rounded shadow-sm">
+    <div class="m-1">
       <div>
         <img class="w-full h-24 object-cover" :src="cover" alt="">
       </div>

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full md:w-4/5 m-auto mt-5 pt-2">
     <h3 class="font-bold mb-2">Derniers avocats inscrits > (200 au total)</h3>
-    <div class="flex flex-wrap justify-between md:justify-around mb-5" v-if="lawyers">
+    <div class="flex flex-wrap justify-center md:justify-center mb-5" v-if="lawyers">
       <lawyer-resume
         :avatar="l.avatar"
         :company="l.company"
@@ -51,7 +51,7 @@
           lastName: "Aliou",
           avatar: "https://images.unsplash.com/photo-1563122870-6b0b48a0af09?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
           company: {
-            name: "Cabinet SOW & Frères"
+            name: "SOW & Frères"
           }
         },
         {
