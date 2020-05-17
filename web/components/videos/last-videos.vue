@@ -1,7 +1,7 @@
 <template>
   <div class="md:w-4/5 m-auto mt-5 pt-2 pb-5">
     <h3 class="font-bold">Nos vidéos > (30 au total)</h3>
-    <div class="flex flex-wrap justify-around mb-5" v-if="videos">
+    <div class="flex flex-wrap justify-left mb-5" v-if="videos">
       <video-resume
         :title="v.title"
         :avatar="v.author.avatar"
@@ -63,7 +63,25 @@
           author: {
             avatar: "https://images.unsplash.com/photo-1507152832244-10d45c7eda57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80"
           }
-        }
+        },
+        {
+          id: 2,
+          title: "Le droit expliqué aux débutants",
+          cover: "https://images.unsplash.com/photo-1472289065668-ce650ac443d2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+          duration: 42,
+          author: {
+            avatar: "https://images.unsplash.com/photo-1507152832244-10d45c7eda57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80"
+          }
+        },
+        {
+          id: 3,
+          title: "Faire votre recherche d'emploi",
+          cover: "https://images.unsplash.com/photo-1505582866941-6788e0205dd2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+          duration: 30,
+          author: {
+            avatar: "https://images.unsplash.com/photo-1507152832244-10d45c7eda57?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80"
+          }
+        },
       ])
     }
   }
