@@ -1,7 +1,7 @@
 <template>
-  <div class="w-full md:w-4/5 m-auto mt-5 pt-2 pb-5">
+  <div class="w-full md:w-4/5 m-auto mt-5 pt-2">
     <h3 class="font-bold mb-2">Derniers avocats inscrits > (200 au total)</h3>
-    <div class="flex flex-wrap justify-between md:justify-around" v-if="lawyers">
+    <div class="flex flex-wrap justify-between md:justify-around mb-5" v-if="lawyers">
       <lawyer-resume
         :avatar="l.avatar"
         :company="l.company"
@@ -14,6 +14,9 @@
     <div v-else>
       <p>chargement</p>
     </div>
+    <p class="text-center mb-3">
+      <nuxt-link class="p-2 border-1 rounded shadow-md bg-gray-600 text-white font-bold m-auto" to="/annuaire">Voir l'annuaire</nuxt-link>
+    </p>
     <hr class="mt-4" />
   </div>
 </template>

@@ -3,6 +3,9 @@
     <div class="w-full">
       <last-registered />
     </div>
+    <div class="w-full bg-gray-100 pt-10 pb-10 border-b">
+      <last-posts />
+    </div>
     <div class="w-full">
       <last-videos />
     </div>
@@ -30,8 +33,10 @@
 import LastRegistered from "../components/lawyers/last-registered";
 import LastVideos from "../components/videos/last-videos";
 import LastNews from "../components/bars/last-news";
+import LastPosts from "../components/posts/last-posts";
 export default {
   components: {
+    LastPosts,
     LastNews,
     LastVideos,
     LastRegistered

@@ -1,7 +1,7 @@
 <template>
   <div class="md:w-4/5 m-auto mt-5 pt-2 pb-5">
     <h3 class="font-bold">Nos vidéos > (30 au total)</h3>
-    <div class="flex flex-wrap justify-around">
+    <div class="flex flex-wrap justify-around mb-5" v-if="videos">
       <video-resume
         :title="v.title"
         :avatar="v.author.avatar"
@@ -12,6 +12,12 @@
         v-for="v in videos"
       />
     </div>
+    <div v-else>
+      <p>chargement</p>
+    </div>
+    <p class="text-center mb-3">
+      <nuxt-link class="p-2 border-1 rounded shadow-md bg-gray-600 text-white font-bold m-auto" to="/annuaire">Voir les vidéos</nuxt-link>
+    </p>
   </div>
 </template>
 
