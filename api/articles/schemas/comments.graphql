@@ -13,7 +13,8 @@ type CommentAuthor {
 type Comment {
     id: ID!
     author: CommentAuthor!,
-    content: String!,
+    content: String!
+    article: Article!
     comments: [Comment!]!
     state: CommentState!
 }

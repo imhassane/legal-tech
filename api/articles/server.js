@@ -1,13 +1,15 @@
 const { ApolloServer, gql } = require('apollo-server');
 
 const { importSchema } = require('graphql-import');
-const { makeExecutableSchema } = require('graphql-tools');
+const { buildFederatedSchema } = require('@apollo/federation');
 
-const typeDefs = importSchema('./schemas/schema.graphql');
+const typeDefs = gql(importSchema('./schemas/schema.graphql'));
 const resolvers = require('./resolvers');
 
+const schema = buildFederatedSchema({typeDefs, resolvers})
+
 const server = new ApolloServer({
-    schema: makeExecutableSchema({ typeDefs, resolvers })
+    schema
 });
 
 module.exports = server;

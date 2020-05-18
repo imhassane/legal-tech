@@ -1,12 +1,12 @@
 # import Article from "./article.graphql"
 
-type Query {
-    articles(start: Int!, limit: Int!): [Articles!]
+extend type Query {
+    articles(start: Int!, limit: Int!): [Article!]
     article(id: ID!): Article!
     articleBySlug(slug: String!): Article!
 }
 
-type Mutation {
+extend type Mutation {
     newArticle(title: String!, content: String!, extract: String!, cover: String!, type: String!): Article!
     updateArticle(id: ID!, title: String, content: String, extract: String): Article!
     updateArticleCover(id: ID!, cover: String!): Article!
