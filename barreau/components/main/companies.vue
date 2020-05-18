@@ -1,7 +1,7 @@
 <template>
   <div class="md:w-5/6 m-auto">
     <div class="md:flex md:justify-around">
-    <p class="flex-1">
+    <p class="hidden md:block flex-1">
       <company-vector />
     </p>
     <div class="md:flex md:justify-around text-right">

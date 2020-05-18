@@ -21,7 +21,7 @@
           </li>
         </ul>
       </div>
-      <p class="flex-1">
+      <p class="hidden md:block flex-1">
         <technology-vector />
       </p>
     </div>

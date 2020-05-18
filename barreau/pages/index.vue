@@ -22,8 +22,8 @@
         <section-universities />
       </div>
 
-      <div class="md:w-5/6 m-auto">
-        <h1>Plus d'informations</h1>
+      <div class="md:w-5/6 mt-12 m-auto">
+        <h1 class="text-4xl mt-5 mb-5 font-bold border-b-4">Plus d'informations</h1>
         <div class="md:flex md:justify-around">
           <div class="rounded-lg shadow-lg p-5 m-3">
             <p class="text-xl font-bold">Visitez notre blog</p>
