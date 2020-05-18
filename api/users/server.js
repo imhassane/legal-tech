@@ -1,22 +1,19 @@
 const { ApolloServer, gql } = require('apollo-server');
+const { buildFederatedSchema } = require('@apollo/federation');
+const { importSchema } = require('graphql-import');
+const GraphQLDateTime = require('graphql-type-datetime');
 
-const typeDefs = gql`
-    type Query {
-        hello: String
-    }
-`;
+const typeDefs = gql(importSchema('./schemas/schema.graphql'));
 
 const resolvers = {
-    Query: {
-        hello: (parent, args, context) => {
-            return "Hello, world!";
-        }
-    }
+    ...require('./resolvers'),
+    DateTime: GraphQLDateTime
 };
 
+const schema = buildFederatedSchema({ typeDefs, resolvers });
+
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    schema
 });
 
 module.exports = server;

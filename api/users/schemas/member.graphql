@@ -1,0 +1,43 @@
+enum CredentialStatus {
+    PENDING # Waiting for the admin to validate the account (after registration and before updates).
+    VERIFICATION # Waiting for the member to validate his account
+    APPROVED # Validated account
+    DELETED # A deleted account
+    BLOCKED # An account that has been blocked by admin because of violations or anything else
+}
+
+enum MemberType {
+    SUPERUSER # Have all the permissions
+    DEVELOPPER # Developpers can have access but can't edit any data.
+    LAWYER # Lawyers account
+    ADMINISTRATOR # Administrator can edit and grant access to data
+    VISITOR # A visitor cannot edit any data
+    INTERNSHIP # Can have some permissions defined by the admin
+}
+
+enum Permissions {
+    CAN_WRITE_ARTICLE
+    CAN_UPDATE_ARTICLE
+    CAN_DELETE_ARTICLE
+    CAN_VALIDATE_ACCOUNT
+    CAN_BLOCK_ACCOUNT
+    CAN_DELETE_ACCOUNT
+}
+
+type Credentials {
+    id: ID!
+    email: String!
+    status: CredentialStatus!
+    type: MemberType!
+    permissions: [Permissions!]!
+    insertedAt: DateTime!
+    updatedAt: DateTime!
+}
+
+type Member @key(fields: "id") {
+    id: ID!
+    credentials: Credentials!
+    firstName: String!
+    lastName: String!
+    avatar: String!
+}
