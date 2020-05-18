@@ -1,22 +1,16 @@
 const { ApolloServer, gql } = require('apollo-server');
+const {ApolloGateway, RemoteGraphQLDataSource} = require('@apollo/gateway');
 
-const typeDefs = gql`
-    type Query {
-        hello: String
-    }
-`;
-
-const resolvers = {
-    Query: {
-        hello: (parent, args, context) => {
-            return "Hello, world!";
-        }
-    }
-};
+const gateway = new ApolloGateway({
+    serviceList: [
+        {url: "http://localhost:5002/graphql", name: 'articles'},
+        {url: "http://localhost:5001/graphql", name: 'users'},
+    ]
+});
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    gateway,
+    subscriptions: false
 });
 
 server.listen({port: 5000}).then(({url}) => {
