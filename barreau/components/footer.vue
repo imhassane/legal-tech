@@ -6,7 +6,7 @@
         <p class="text-white">Siège: Dixinn</p>
         <p class="text-white">Téléphone: 622-876-904</p>
         <div class="mt-8">
-          <nuxt-link class="p-3 bg-red-500 font-semibold text-white shadow-lg rounded" to="/contact">Contactez-nous</nuxt-link>
+          <nuxt-link class="p-3 bg-red-600 font-semibold text-white shadow-lg rounded" to="/contact">Contactez-nous</nuxt-link>
         </div>
       </div>
       <div class="md:flex-1 md:flex md:justify-end">

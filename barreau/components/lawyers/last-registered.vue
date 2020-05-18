@@ -1,6 +1,5 @@
 <template>
-  <div class="w-full md:w-4/5 m-auto mt-5 pt-2">
-    <h3 class="font-bold mb-10">Derniers avocats inscrits > (200 au total)</h3>
+  <div class="w-full md:w-5/6 m-auto mt-5 pt-2">
     <div class="flex flex-wrap justify-center md:justify-center mb-5" v-if="lawyers">
       <lawyer-resume
         :avatar="l.avatar"
@@ -15,9 +14,8 @@
       <p>chargement</p>
     </div>
     <p class="text-center mb-12 mt-10">
-      <nuxt-link class="p-3 rounded-lg shadow-lg bg-indigo-800 text-white font-bold m-auto" to="/annuaire">Voir l'annuaire</nuxt-link>
+      <nuxt-link class="p-3 pl-6 pr-6 rounded-lg shadow-lg bg-red-800 text-white font-bold m-auto" to="/annuaire">Voir l'annuaire</nuxt-link>
     </p>
-    <hr class="mt-4" />
   </div>
 </template>
 

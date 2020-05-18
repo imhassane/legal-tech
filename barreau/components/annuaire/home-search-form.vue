@@ -1,7 +1,7 @@
 <template>
   <div class="md:w-5/6 m-auto">
-    <h1 class="text-center uppercase mb-4 font-bold text-3xl text-white">Annuaire des avocats</h1>
-    <p class="mb-12 text-center font-semibold text-white">Rechercher un avocat du barreau de Conakry</p>
+    <h1 class="text-center uppercase mb-4 font-bold text-3xl">Annuaire des avocats</h1>
+    <p class="mb-12 text-center font-semibold">Rechercher un avocat du barreau de Conakry</p>
 
     <form class="md:flex md:justify-around">
       <div class="m-2">
@@ -14,10 +14,10 @@
         </select>
       </div>
       <div class="m-2">
-        <input type="text" class="rounded-lg p-3 bg-gray-200 font-semibold text-lg" placeholder="Nom de l'avocat" />
+        <input type="text" class="rounded-lg p-3 bg-gray-800 font-semibold text-lg" placeholder="Nom de l'avocat" />
       </div>
       <div class="m-2">
-        <button class="border-2 font-bold shadow-lg bg-gray-200 rounded-lg p-3">
+        <button class="font-bold text-white shadow-lg bg-red-700 rounded-lg p-3">
           Rechercher
         </button>
       </div>
