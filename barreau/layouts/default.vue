@@ -4,12 +4,14 @@
     <div>
       <nuxt />
     </div>
+    <page-footer />
   </div>
 </template>
 
 <script>
   import Navbar from "../components/nav/navbar";
+  import PageFooter from "../components/footer";
   export default {
-    components: {Navbar}
+    components: {PageFooter, Navbar}
   }
 </script>
