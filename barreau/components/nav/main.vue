@@ -1,10 +1,10 @@
 <template>
   <div class="md:w-5/6 m-auto">
-    <div class="pt-8 pb-8 flex">
+    <div class="pt-8 pb-8 md:flex">
       <div class="m-1">
         <h1 class="text-4xl uppercase font-extrabold text-red-800">Le Barreau</h1>
       </div>
-      <ul class="flex-1 flex md:justify-around">
+      <ul class="md:flex-1 flex flex-wrap md:justify-around">
         <li class="self-center m-1">
           <nuxt-link class="font-semibold text-md uppercase" to="/">Accueil</nuxt-link>
         </li>

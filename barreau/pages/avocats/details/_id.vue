@@ -8,7 +8,7 @@
         <div v-if="lawyer.avatar">
           <img class="rounded-lg shadow-lg w-64 h-64 object-cover" :src="lawyer.avatar" alt="image de profil" />
         </div>
-        <div class="md:flex-1 mx-2 md:mx-5">
+        <div class="my-10 md:my-0 md:flex-1 mx-2 md:mx-5">
           <p class="mb-2 flex justify-between">
             <span class="font-semibold">Prénom</span>
             <span class="text-sm font-light">{{ lawyer.firstName }}</span>
