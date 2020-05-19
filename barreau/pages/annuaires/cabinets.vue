@@ -24,7 +24,7 @@
           >
             <div class="p-3 border-t-2 border-red-800 rounded-lg shadow-lg ">
               <p class="text-lg font-semibold my-2">
-                <nuxt-link :to="`cabinets/details/${c.id}`">{{ c.name }}</nuxt-link>
+                <nuxt-link :to="`/cabinets/voir/${c.id}`">{{ c.name }}</nuxt-link>
               </p>
               <p class="font-light text-sm">{{ c.prefecture }}</p>
               <p class="text-sm font-light text-gray-500">{{ c.totalLawyers }} avocats</p>
