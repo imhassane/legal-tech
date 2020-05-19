@@ -1,7 +1,7 @@
 <template>
   <footer class="border-t-2 bg-red-800 pt-20">
     <div class="md:w-5/6 m-auto md:flex md:justify-between pb-20">
-      <div class="m-2">
+      <div class="m-2 mb-10 md:m-2">
         <h1 class="text-lg font-semibold text-white border-b-2 mb-2">Ordre des avocats du barreau de Conakry</h1>
         <p class="text-white">Siège: Dixinn</p>
         <p class="text-white">Téléphone: 622-876-904</p>
