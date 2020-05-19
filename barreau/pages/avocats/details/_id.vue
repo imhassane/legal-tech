@@ -9,22 +9,28 @@
           <img class="rounded-lg shadow-lg w-64 h-64 object-cover" :src="lawyer.avatar" alt="image de profil" />
         </div>
         <div class="md:flex-1 mx-2 md:mx-5">
-          <p class="flex justify-between">
+          <p class="mb-2 flex justify-between">
             <span class="font-semibold">Prénom</span>
             <span class="text-sm font-light">{{ lawyer.firstName }}</span>
           </p>
-          <p class="flex justify-between">
+          <p class="mb-2 flex justify-between">
             <span class="font-semibold">Nom</span>
             <span class="text-sm font-light">{{ lawyer.lastName }}</span>
           </p>
-          <p class="flex justify-between">
+          <p class="mb-2 flex justify-between">
             <span class="font-semibold">Date de sermon</span>
             <span class="text-sm font-light">{{ lawyer.sermonDate }}</span>
           </p>
-          <p class="flex justify-between">
+          <p class="mb-2 flex justify-between">
             <span class="font-semibold">Travaille à</span>
             <span class="text-sm font-light">{{ lawyer.company.name }}</span>
           </p>
+          <div v-if="lawyer.description && lawyer.description.trim().length > 0">
+            <span class="block font-semibold">A propos</span>
+            <p class="font-light my-3">
+              {{ lawyer.description }}
+            </p>
+          </div>
         </div>
         <div>
           <cabinet-contact :contact="lawyer.contact" />
@@ -61,6 +67,8 @@
         avatar: "https://images.unsplash.com/photo-1537281809317-e1da440af90f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
         domain: {id: 1, name: "Droits de la famille"},
         description: `
+          Je suis passionné par le droit. J'ai l'intention de faire avancer les choses dans mon pays et de rendre la justice là où elle
+          est dûe
         `,
         education: [
           { id: 1, name: "Diplôme d'avocat en droit de la famille", year: 2008, school: "Université General Lansana Conté" },
