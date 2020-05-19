@@ -29,6 +29,7 @@
           v-for="l in cabinet.lawyers" :key="l.id"
         >
          <cabinet-lawyers
+           :id="l.id"
           :avatar="l.avatar"
           :firstName="l.firstName"
           :lastName="l.lastName"

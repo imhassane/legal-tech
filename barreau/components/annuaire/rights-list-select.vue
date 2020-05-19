@@ -1,6 +1,8 @@
 <template>
   <div>
-    <select class="font-semibold block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+    <select
+      @change="onChange"
+      class="font-semibold block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
       <option value="">Toutes les spécialités</option>
       <option :value="r.id" :key="r.id" v-for="r in rights">{{ r.name }}</option>
     </select>
@@ -13,6 +15,7 @@
 <script>
   export default {
     name: 'rights-list-select',
+    props: ['onChange'],
     computed: {
       rights: () => ([
         {id: 1, name: "Droit bancaire et boursier"},
