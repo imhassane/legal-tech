@@ -1,6 +1,7 @@
 <template>
   <div>
     <navbar />
+    <last-news />
     <div>
       <nuxt />
     </div>
@@ -11,7 +12,8 @@
 <script>
   import Navbar from "../components/nav/navbar";
   import PageFooter from "../components/footer";
+  import LastNews from "../components/news/last-news";
   export default {
-    components: {PageFooter, Navbar}
+    components: {LastNews, PageFooter, Navbar}
   }
 </script>

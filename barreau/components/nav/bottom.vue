@@ -11,13 +11,19 @@
         <nuxt-link to="">Revue</nuxt-link>
       </li>
       <li class="flex-1 mr-1 my-1">
-        <nuxt-link to="">Déontologie</nuxt-link>
+        <nuxt-link to="/deontologie">Déontologie</nuxt-link>
       </li>
       <li class="flex-1 mr-1 my-1">
         <nuxt-link to="">Barreaux étrangers</nuxt-link>
       </li>
       <li class="flex-1 mr-1 my-1">
-        <nuxt-link to="">Espace avocat</nuxt-link>
+        <nuxt-link to="/ma-carriere">Ma carrière</nuxt-link>
+      </li>
+      <li class="flex-1 mr-1 my-1">
+        <nuxt-link to="/services">Services</nuxt-link>
+      </li>
+      <li class="flex-1 mr-1 my-1">
+        <nuxt-link to="/faq">Foire aux questions</nuxt-link>
       </li>
     </ul>
   </div>
