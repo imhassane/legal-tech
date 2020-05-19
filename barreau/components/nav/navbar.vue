@@ -1,13 +1,15 @@
 <template>
-  <div class="w-full border-b-2 shadow">
+  <div class="w-full shadow">
     <navbar-top />
     <navbar-main />
+    <navbar-bottom />
   </div>
 </template>
 <script>
   import NavbarTop from "./top";
   import NavbarMain from "./main";
+  import NavbarBottom from "./bottom";
   export default {
-    components: {NavbarMain, NavbarTop}
+    components: {NavbarBottom, NavbarMain, NavbarTop}
   }
 </script>
