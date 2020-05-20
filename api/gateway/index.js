@@ -1,5 +1,23 @@
-const { ApolloServer, gql } = require('apollo-server');
+const { ApolloServer } = require('apollo-server');
 const {ApolloGateway, RemoteGraphQLDataSource} = require('@apollo/gateway');
+const jwt = require('jsonwebtoken');
+
+require('dotenv').config();
+
+// Initialization of the database connection.
+const { Pool } = require('pg');
+
+const pool = new Pool();
+
+// -------- SQL QUERIES ------------
+const GET_USER_PERMISSION = `
+    SELECT
+        permission
+    FROM tj_credentials_permission
+    WHERE cre_id = $1
+`;
+
+// ------------------------------------
 
 const gateway = new ApolloGateway({
     serviceList: [
@@ -10,11 +28,38 @@ const gateway = new ApolloGateway({
         {url: "http://localhost:5005/graphql", name: 'domains'},
         {url: "http://localhost:5006/graphql", name: 'lawyers'},
         {url: "http://localhost:5007/graphql", name: 'educations'},
-    ]
+        {url: "http://localhost:5008/graphql", name: 'authentication'},
+    ],
+    buildService: ({url}) => new RemoteGraphQLDataSource({
+        url,
+        willSendRequest: ({request, context}) => {
+            if(context.user) request.http.headers.set("user", JSON.stringify(context.user));
+        }
+    })
 });
+
+// Context of the server.
+const context = async ({ req }) => {
+    let context = {};
+    const token = req.headers["authorization"];
+    try {
+        const payload = await jwt.verify(token, process.env.JWT_SECRET);
+        context = { ...context, user: payload };
+
+        const { rows } = await pool.query(GET_USER_PERMISSION, [payload.id]);
+        const permissions = rows.map(r => r.permission);
+        context = { ...context, permissions };
+
+    } catch(ex) {
+        context = { ...context, user: null };
+    }
+
+    return context;
+};
 
 const server = new ApolloServer({
     gateway,
+    context,
     subscriptions: false
 });
 

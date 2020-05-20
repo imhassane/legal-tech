@@ -19,6 +19,9 @@
     "@apollo/federation": "^0.16.0",
     "@apollo/gateway": "^0.16.0",
     "apollo-server-lambda": "^2.13.1",
-    "graphql": "^15.0.0"
+    "dotenv": "^8.2.0",
+    "graphql": "^15.0.0",
+    "jsonwebtoken": "^8.5.1",
+    "pg": "^8.2.1"
   }
 }
