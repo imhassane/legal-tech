@@ -1,0 +1,5 @@
+extend type Member @key(fields: "id") {
+    id: ID! @external
+    prefecture: String!
+    sermonDate: DateTime!
+}

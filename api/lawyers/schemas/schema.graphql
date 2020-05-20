@@ -1,0 +1,11 @@
+# import Member from "./lawyer.graphql"
+
+scalar DateTime
+
+extend type Query {
+    lawyerInformations(id: ID): Member
+}
+
+extend type Mutation {
+    updateLawyerInformations(id: ID, prefecture: String, sermonDate: DateTime): Member
+}
