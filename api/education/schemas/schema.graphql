@@ -1,0 +1,6 @@
+# import Education from "./education.graphql"
+scalar DateTime
+
+extend type Mutation {
+    newEducation(name: String!, type: String!): Education!
+}

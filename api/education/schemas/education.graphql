@@ -1,0 +1,14 @@
+enum EducationType {
+    BACCALEAUREAT, LICENCE, MASTER, DOCTORAT
+}
+
+type Education @key(fields: "id") {
+    id: ID!
+    name: String!
+    type: EducationType!
+}
+
+extend type Member @key(fields: "id") {
+    id: ID! @external
+    education: [Education!]!
+}
