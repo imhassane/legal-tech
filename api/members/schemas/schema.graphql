@@ -8,6 +8,7 @@ input NewMemberInput {
     avatar: String!
     type: MemberType!
     email: String!
+    password: String!
     description: String!
 }
 

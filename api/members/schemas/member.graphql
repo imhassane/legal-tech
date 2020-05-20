@@ -5,7 +5,7 @@ enum MemberType {
     ADMIN
     LAWYER
     INTERN
-    DEVELOPPER
+    DEV
 }
 
 enum MemberPermissions {
