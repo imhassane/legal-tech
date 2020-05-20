@@ -1,7 +1,7 @@
 <template>
   <div class="py-8">
     <div class="md:w-5/6 m-auto" v-if="lawyers">
-      <h1 class="text-2xl font-semibold pb-2 mb-5 border-b-2">Tableau de l'ordre des avocats</h1>
+      <h1 class="text-3xl font-bold border-b-4 mb-5">Tableau de l'ordre des avocats</h1>
       <p class="font-semibold my-3">
         Cette liste contient tous les avocats inscrits sur notre plateforme
       </p>

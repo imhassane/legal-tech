@@ -1,7 +1,7 @@
 <template>
   <div class="py-8">
     <div class="md:w-5/6 m-auto" v-if="services">
-      <h1 class="text-2xl font-semibold pb-2 mb-5 border-b-4">Services du barreau</h1>
+      <h1 class="text-3xl font-bold border-b-4 mb-5">Services du barreau</h1>
       <div>
         <p class="py-2 text-lg font-semibold">
           Le barreau doit fournir un service éfficace à ses membres.

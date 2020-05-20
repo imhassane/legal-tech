@@ -1,6 +1,6 @@
 <template>
   <div class="border-t-2 border-red-800 m-2 rounded-lg py-5 px-12 shadow-lg">
-    <h1 class=" mb-2 text-lg font-semibold">Contact du cabinet</h1>
+    <h1 class=" mb-2 text-lg font-semibold">Contact</h1>
     <div>
       <p v-if="contact.telephone" class="flex">
         <icon-call />

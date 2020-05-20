@@ -1,7 +1,7 @@
 <template>
   <div class="py-8">
     <div class="md:w-5/6 m-auto" v-if="posts">
-      <h1 class="pb-2 mb-5 border-b-4 text-3xl font-semibold">Espace presse</h1>
+      <h1 class="text-3xl font-bold border-b-4 mb-5">Espace presse</h1>
       <div class="my-5">
         <div class="md:flex md:flex-wrap">
           <div

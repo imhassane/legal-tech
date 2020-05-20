@@ -6,7 +6,7 @@
           <a class="text-white font-semibold" href="https://web-legal-tech.netlify.app" target="_blank">Site public</a>
         </li>
         <li class="p-2">
-          <a class="text-white font-semibold" href="/espace-presse">Espace presse</a>
+          <nuxt-link class="text-white font-semibold" to="/espace-presse">Espace presse</nuxt-link>
         </li>
       </ul>
       <ul class="flex justify-center">
