@@ -17,3 +17,6 @@ services:
 
   lawyers:
     5006
+
+  educations:
+    5007
