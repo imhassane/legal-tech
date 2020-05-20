@@ -1,0 +1,30 @@
+# import Member from "./member.graphql"
+
+scalar DateTime
+
+input NewMemberInput {
+    firstName: String!
+    lastName: String!
+    avatar: String!
+    type: MemberType!
+    email: String!
+    description: String!
+}
+
+input UpdateMemberInput {
+    firstName: String!
+    lastName: String!
+    avatar: String!
+    description: String!
+}
+
+extend type Query {
+    members(start: Int!, limit: Int!): [Member!]!
+    member(id: ID!): Member!
+}
+
+extend type Mutation {
+    newMember(data: NewMemberInput!): Member!
+    updatePersonnalInformations(id: ID!, data: UpdateMemberInput): Member!
+    updateMemberType(id: ID!, status: MemberType!): Member!
+}

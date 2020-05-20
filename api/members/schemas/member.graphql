@@ -1,0 +1,35 @@
+# import Credentials from "./credentials.graphql"
+
+enum MemberType {
+    SUPERUSER
+    ADMIN
+    LAWYER
+    INTERN
+    DEVELOPPER
+}
+
+enum MemberPermissions {
+    SUPREME,
+
+    WRITE_ALL_POSTS,
+    WRITE_BLOG_POST, WRITE_REVUE, WRITE_PAGE, WRITE_DOMAIN, WRITE_PRESS, WRITE_FOREIGN_POSTS, WRITE_NEWS,
+
+    DELETE_ALL_POSTS,
+    DELETE_BLOG_POST, DELETE_REVUE, DELETE_PAGE, DELETE_DOMAIN, DELETE_PRESS, DELETE_FOREIGN_POSTS, DELETE_NEWS,
+
+    UPDATE_ALL_POSTS,
+    UPDATE_BLOG_POST, UPDATE_REVUE, UPDATE_PAGE, UPDATE_DOMAIN, UPDATE_PRESS, UPDATE_FOREIGN_POSTS, UPDATE_NEWS,
+
+    APPROVE_MEMBER, BLOCK_MEMBER_TEMPORARILY, BLOCK_MEMBER_FOREVER, DELETE_MEMBER
+}
+
+type Member @key(fields: "id") {
+    id: ID!
+    credentials: Credentials!
+    firstName: String!
+    lastName: String!
+    avatar: String!
+    type: MemberType!
+    description: String!
+    permissions: [MemberPermissions!]!
+}
