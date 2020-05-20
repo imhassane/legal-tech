@@ -1,0 +1,19 @@
+{
+  "name": "domains",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "apollo-server": "^2.13.1",
+    "graphql-import": "^1.0.2",
+    "graphql-type-datetime": "^0.2.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

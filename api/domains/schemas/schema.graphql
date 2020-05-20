@@ -1,0 +1,10 @@
+# import Domain from "./domain.graphql"
+scalar DateTime
+
+extend type Query {
+    domain(id: ID!): Domain!
+}
+
+extend type Mutation {
+    newDomain(name: String!, description: String!): Domain!
+}
