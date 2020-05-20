@@ -1,0 +1,18 @@
+# import Company from "./company.graphql"
+scalar DateTime
+
+input NewCompanyInput {
+    name: String!
+    prefecture: String!
+    createdAt: String!
+    description: String!
+    identification: String!
+}
+
+extend type Query {
+    companies(start: Int, limit: Int): [Company!]!
+}
+
+extend type Mutation {
+    newCompany(data: NewCompanyInput): Company!
+}
