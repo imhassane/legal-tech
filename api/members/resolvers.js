@@ -14,17 +14,25 @@ const members = async (_, {start, limit}, {pool}) => {
     }
 };
 
-const member = async (_p, {id}, {pool}) => {
+const member = async (_p, {id}, {pool, user, permissions}) => {
     try {
         let result = await pool.query(sql.GET_MEMBER, [id]);
         if(!result.rows || !result.rows.length)
             throw new Error("Désolé! Mais ce compte n'existe pas dans notre base de données");
 
         let member = result.rows[0];
-        result = await pool.query(sql.GET_MEMBER_PERMISSION, [member.cre_id]);
-        const permissions = result.rows.map(r => r.permission);
+        let _permissions = {};
 
-        return makeSchemaOfMember({ ...member, permissions });
+        // If the current user id matches the given id
+        // we pass the permissions we have in the context.
+        if(member.cre_id === user) {
+            _permissions = permissions;
+        } else {
+            result = await pool.query(sql.GET_MEMBER_PERMISSION, [member.cre_id]);
+            _permissions = result.rows.map(r => r.permission);
+        }
+
+        return makeSchemaOfMember({ ...member, permissions: _permissions });
     } catch(ex) {
         // TODO: logging.
         throw ex;
