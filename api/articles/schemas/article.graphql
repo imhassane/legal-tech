@@ -1,16 +1,13 @@
 # import Comment from "./comments.graphql"
 
 enum ArticleType {
-    FOREIGN_ARTICLE
-    BLOG_ARTICLE
-    BAR_ARTICLE
+    BLOG, REVUE, PAGE,
+    DOMAIN, ACTU,
+    PRESS, FOREIGN
 }
 
 enum ArticleState {
-    DRAFT
-    PENDING
-    DELETED
-    APPROVED
+    DRAFT, PENDING, DELETED, APPROVED
 }
 
 type Article @key(fields: "id") {
