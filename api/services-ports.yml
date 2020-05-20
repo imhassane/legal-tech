@@ -1,0 +1,19 @@
+services:
+
+  members:
+    5001
+
+  articles:
+    5002
+
+  companies:
+    5003
+
+  contacts:
+    5004
+
+  domains:
+    5005
+
+  lawyers:
+    5006
