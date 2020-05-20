@@ -28,7 +28,7 @@ const authenticate = async (_parent, data, {pool}) => {
     result = await pool.query(query, [cre_id])
     const permissions = result.rows.map(r => r.permission);
 
-    const token = jwt.sign({ id: cre_id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: cre_id }, process.env.JWT_SECRET, { expiresIn: '2h' });
     return { token, permissions };
 };
 
