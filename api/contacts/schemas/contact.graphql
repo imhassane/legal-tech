@@ -1,0 +1,15 @@
+type Contact @key(fields: "id") {
+    id: ID!
+    telephone: String!
+    email: String!
+    address: String!
+    facebookID: String!
+    twitterID: String!
+    instagramID: String!
+    website: String!
+}
+
+extend type Company @key(fields: "id") {
+    id: ID! @external
+    contact: Contact!
+}

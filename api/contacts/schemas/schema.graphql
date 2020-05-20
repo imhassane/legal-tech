@@ -1,0 +1,21 @@
+# import Contact from "./contact.graphql"
+scalar DateTime
+
+input NewContactInput {
+    telephone: String!
+    email: String!
+    address: String
+    facebookID: String
+    twitterID: String
+    instagramID: String
+    website: String
+}
+
+extend type Query {
+    contact(id: ID!): Contact!
+}
+
+extend type Mutation {
+    newCompanyContact(id: ID!, data: NewContactInput!): Contact!
+    newUserContact(id: ID!, data: NewContactInput!): Contact!
+}
