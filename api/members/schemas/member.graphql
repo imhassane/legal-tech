@@ -31,5 +31,5 @@ type Member @key(fields: "id") {
     avatar: String!
     type: MemberType!
     description: String!
-    permissions: [MemberPermissions!]!
+    permissions: [MemberPermissions]!
 }

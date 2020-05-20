@@ -1,3 +1,16 @@
+CREATE TYPE permission AS ENUM(
+    'SUPREME', 'WRITE_ALL_POSTS',
+    'WRITE_BLOG_POST', 'WRITE_REVUE',
+    'WRITE_PAGE', 'WRITE_DOMAIN',
+    'WRITE_PRESS', 'WRITE_FOREIGN_POSTS',
+    'WRITE_NEWS', 'DELETE_ALL_POSTS',
+    'DELETE_BLOG_POST', 'DELETE_REVUE',
+    'DELETE_PAGE', 'DELETE_DOMAIN', 'DELETE_PRESS', 'DELETE_FOREIGN_POSTS', 'DELETE_NEWS',
+    'UPDATE_ALL_POSTS', 'UPDATE_BLOG_POST',
+    'UPDATE_REVUE', 'UPDATE_PAGE', 'UPDATE_DOMAIN', 'UPDATE_PRESS', 'UPDATE_FOREIGN_POSTS', 'UPDATE_NEWS',
+    'APPROVE_MEMBER', 'BLOCK_MEMBER_TEMPORARILY', 'BLOCK_MEMBER_FOREVER', 'DELETE_MEMBER'
+    );
+
 CREATE TYPE user_type AS ENUM ('SUPERUSER', 'ADMIN', 'LAWYER', 'INTERN', 'DEV');
 
 CREATE TYPE credential_status AS ENUM (
@@ -38,4 +51,16 @@ create table t_member_mem
 			references t_credentials_cre
 				on delete restrict
 );
+
+create table tj_credentials_permission
+(
+	cre_id int not null
+		constraint tj_credentials_permission_t_credentials_cre_cre_id_fk
+			references t_credentials_cre
+				on delete restrict,
+	permission permission default 'WRITE_BLOG_POST' not null,
+	constraint tj_credentials_permission_pk
+		primary key (cre_id, permission)
+);
+
 

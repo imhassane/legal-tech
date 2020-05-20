@@ -12,22 +12,22 @@ const makeSchemaOfMember = (data) => {
         result.type = data.mem_type;
     if(data.mem_description)
         result.description = data.mem_description;
-    if(data.mem_permissions)
-        result.permissions = data.mem_permissions;
-    return result;
+    if(data.permissions)
+        result.permissions = data.permissions;
+
+    return makeSchemaOfCredentials(result);
 };
 
 const makeSchemaOfCredentials = (data) => {
-    let result = {};
     if(data.cre_id)
-        result.id = data.cre_id;
+        data.id = data.cre_id;
     if(data.cre_email)
-        result.email = data.cre_email;
+        data.email = data.cre_email;
     if(data.cre_inserted_at)
-        result.insertedAt = data.cre_inserted_at;
+        data.insertedAt = data.cre_inserted_at;
     if(data.cre_updated_at)
-        result.updatedAt = data.cre_updated_at;
-    return result;
+        data.updatedAt = data.cre_updated_at;
+    return data;
 };
 
 module.exports = {
