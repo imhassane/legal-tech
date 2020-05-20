@@ -34,6 +34,7 @@ const gateway = new ApolloGateway({
         url,
         willSendRequest: ({request, context}) => {
             if(context.user) request.http.headers.set("user", JSON.stringify(context.user));
+            if(context.permissions) request.http.headers.set("permissions", JSON.stringify(context.permissions));
         }
     })
 });
@@ -44,7 +45,7 @@ const context = async ({ req }) => {
     const token = req.headers["authorization"];
     try {
         const payload = await jwt.verify(token, process.env.JWT_SECRET);
-        context = { ...context, user: payload };
+        context = { ...context, user: payload.id };
 
         const { rows } = await pool.query(GET_USER_PERMISSION, [payload.id]);
         const permissions = rows.map(r => r.permission);
