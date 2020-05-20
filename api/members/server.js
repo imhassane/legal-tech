@@ -18,10 +18,14 @@ const resolvers = {
 };
 const schema = buildFederatedSchema({ typeDefs, resolvers });
 
-const context = () => {
-    return {
-        pool: databasePool
-    }
+const context = ({ req }) => {
+    let context = { pool: databasePool };
+
+    const { user, permissions } = req.headers;
+    if(user) context.user = parseInt(user);
+    if(permissions) context.permissions = JSON.parse(permissions);
+
+    return context;
 };
 
 const server = new ApolloServer({ schema, context });
