@@ -9,7 +9,12 @@ type Contact @key(fields: "id") {
     website: String!
 }
 
+extend type Member @key(fields: "id") {
+    id: ID! @external
+    contact: Contact
+}
+
 extend type Company @key(fields: "id") {
     id: ID! @external
-    contact: Contact!
+    contact: Contact
 }
