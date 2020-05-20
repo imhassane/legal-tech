@@ -25,6 +25,6 @@ extend type Query {
 
 extend type Mutation {
     newMember(data: NewMemberInput!): Member!
-    updatePersonnalInformations(id: ID!, data: UpdateMemberInput): Member!
+    updatePersonnalInformations(data: UpdateMemberInput): Member!
     updateMemberType(id: ID!, status: MemberType!): Member!
 }
