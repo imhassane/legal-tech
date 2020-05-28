@@ -63,4 +63,14 @@ create table tj_credentials_permission
 		primary key (cre_id, permission)
 );
 
+create table t_lawyer_info_lin
+(
+	cre_id int not null
+		constraint t_lawyer_info_lin_t_credentials_cre_cre_id_fk
+			references t_credentials_cre
+				on delete restrict,
+	lin_prefecture varchar(40) not null,
+	lin_sermon_date timestamp default now() not null
+);
+
 

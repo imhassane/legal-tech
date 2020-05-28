@@ -24,7 +24,7 @@ const GET_MEMBER = `
         mem_type, mem_description
     FROM t_member_mem
     JOIN t_credentials_cre USING (cre_id)
-    WHERE mem_id = $1
+    WHERE cre_id = $1
 `;
 
 const GET_MEMBER_PERMISSION = `
