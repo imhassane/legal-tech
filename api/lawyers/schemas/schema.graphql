@@ -1,9 +1,9 @@
-# import Member from "./lawyer.graphql"
-
 scalar DateTime
 
-extend type Query {
-    lawyerInformations(id: ID): Member
+extend type Member @key(fields: "id") {
+    id: ID!                 @external
+    prefecture: String
+    sermonDate: DateTime
 }
 
 extend type Mutation {
