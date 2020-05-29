@@ -105,3 +105,20 @@ create type lawyer_domain_type as enum ('MAIN', 'SKILL');
 alter table tj_domain_lawyer
 	add type lawyer_domain_type default 'SKILL' not null;
 
+create type education_type as enum ('CEPE', 'BEPC', 'BACCALAUREAT', 'LICENCE', 'MASTER_1', 'MASTER_2', 'DOCTORAT', 'FORMATION');
+create table t_education_edu
+(
+	edu_id serial
+		constraint t_education_edu_pk
+			primary key,
+	edu_name varchar(50) not null,
+	edu_type education_type default 'LICENCE' not null,
+	edu_year int default 2020 not null,
+	edu_inserted_at timestamp default now() not null,
+	edu_updated_at timestamp default now() not null,
+	cre_id int not null
+		constraint t_education_edu_t_credentials_cre_cre_id_fk
+			references t_credentials_cre
+				on delete restrict
+);
+

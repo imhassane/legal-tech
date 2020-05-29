@@ -2,5 +2,6 @@
 scalar DateTime
 
 extend type Mutation {
-    newEducation(name: String!, type: String!): Education!
+    newEducation(name: String!, type: String!, year: Int!): String!
+    updateEducation(id: ID!, name: String, type: EducationType, year: Int): String!
 }

@@ -1,14 +1,21 @@
 enum EducationType {
-    BACCALEAUREAT, LICENCE, MASTER, DOCTORAT
+    CEPE
+    BEPC
+    BACCALEAUREAT
+    LICENCE
+    MASTER_1
+    MASTER_2
+    DOCTORAT
 }
 
 type Education @key(fields: "id") {
     id: ID!
-    name: String!
+    school: String!
     type: EducationType!
+    year: Int!
 }
 
 extend type Member @key(fields: "id") {
     id: ID! @external
-    education: [Education!]!
+    formations: [Education!]
 }

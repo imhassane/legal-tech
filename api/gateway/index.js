@@ -21,8 +21,8 @@ const GET_USER_PERMISSION = `
 
 const gateway = new ApolloGateway({
     serviceList: [
-        {url: "http://localhost:5002/graphql", name: 'articles'},
         {url: "http://localhost:5001/graphql", name: 'users'},
+        {url: "http://localhost:5002/graphql", name: 'articles'},
         {url: "http://localhost:5003/graphql", name: 'companies'},
         {url: "http://localhost:5004/graphql", name: 'contacts'},
         {url: "http://localhost:5005/graphql", name: 'domains'},
