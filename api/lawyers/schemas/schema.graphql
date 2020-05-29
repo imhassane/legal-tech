@@ -7,5 +7,6 @@ extend type Member @key(fields: "id") {
 }
 
 extend type Mutation {
+    addLawyerInformations(id: ID, prefecture: String!, sermonDate: DateTime!): Member!
     updateLawyerInformations(id: ID, prefecture: String, sermonDate: DateTime): Member
 }
