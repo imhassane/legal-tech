@@ -73,4 +73,19 @@ create table t_lawyer_info_lin
 	lin_sermon_date timestamp default now() not null
 );
 
+create table t_domain_dom
+(
+	dom_id serial
+		constraint t_domain_dom_pk
+			primary key,
+	dom_name varchar(50) not null,
+	dom_description varchar(250),
+	dom_inserted_at timestamp default now() not null,
+	dom_updated_at timestamp default now() not null,
+	art_id int default 1 not null
+);
+
+create unique index t_domain_dom_dom_name_uindex
+	on t_domain_dom (dom_name);
+
 
