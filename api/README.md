@@ -16,7 +16,10 @@ the `gateway` directory and is calling all the other microservices. <br />
     - [ ] CRUD on articles
     - [ ] CRUD on comments
 - [ ] Domains
-    - [ ] CRUD on domains
+    - [x] Adding a new domain
+    - [x] Adding a domain for a lawyer
+    - [x] Getting lawyer's domain
+    - [ ] Getting the domain's article
 - [ ] Laws
     - [ ] CRUD on laws
 - [ ] Contacts
