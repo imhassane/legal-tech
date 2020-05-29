@@ -122,3 +122,24 @@ create table t_education_edu
 				on delete restrict
 );
 
+create table t_contact_con
+(
+	con_id serial
+		constraint t_contact_con_pk
+			primary key,
+	con_email varchar(100) not null,
+	con_telephone char(9) not null,
+	con_address varchar(250),
+	con_facebook varchar(250),
+	con_twitter varchar(250),
+	con_instagram varchar(250),
+	con_webiste varchar(250),
+	cre_id int
+		constraint t_contact_con_t_credentials_cre_cre_id_fk
+			references t_credentials_cre,
+	company_id int
+);
+
+create unique index t_contact_con_con_email_uindex
+	on t_contact_con (con_email);
+

@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "@apollo/federation": "^0.16.2",
     "apollo-server": "^2.13.1",
+    "dotenv": "^8.2.0",
     "graphql-import": "^1.0.2",
-    "graphql-type-datetime": "^0.2.4"
+    "graphql-type-datetime": "^0.2.4",
+    "pg": "^8.2.1"
   },
   "devDependencies": {},
   "scripts": {

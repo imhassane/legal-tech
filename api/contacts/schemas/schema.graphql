@@ -12,7 +12,7 @@ input NewContactInput {
 }
 
 extend type Query {
-    contact(id: ID!): Contact!
+    contact(id: ID): Contact
 }
 
 extend type Mutation {
