@@ -1,3 +1,5 @@
+const { convertToSchema } = require('./helper');
+
 // TODO: Adding join with the article table.
 const DOMAINS = `
     SELECT
@@ -21,6 +23,12 @@ const DOMAIN = `
     WHERE dom_id = $1
 `;
 
+const ADD_DOMAIN = `
+    INSERT INTO t_domain_dom(dom_name, dom_description)
+    VALUES ($1, $2)
+    RETURNING *
+`;
+
 module.exports = {
 
     Query: {
@@ -36,9 +44,21 @@ module.exports = {
         }
     },
 
-    Member: {
-        newDomain: async (_parent, data, {pool}) => {
-            // TODO: todo
+    Mutation: {
+        newDomain: async (_parent, data, {pool, permissions, user}) => {
+            if(!user)
+                throw new Error("Vous devez vous connecter pour éffectuer cette action");
+
+            if(!permissions || !(permissions.includes('SUPREME') || permissions.includes('WRITE_DOMAIN')))
+                throw new Error("Vous n'avez pas les permissions nécessaires pour éffectuer cette action");
+
+            if(!data.name || data.name.length < 5)
+                throw new Error("Le nom doit contenir au minimum 5 caractères");
+            if(!data.description || data.description.length < 10)
+                throw new Error("La description doit contenir au minimum 10 caractères");
+            
+            const { rows } = await pool.query(ADD_DOMAIN, [data.name, data.description]);
+            return convertToSchema(rows[0]);
         },
         setDomainArticle: async (_parent, data, {pool}) => {
 
