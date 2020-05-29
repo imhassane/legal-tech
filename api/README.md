@@ -10,7 +10,8 @@ the `gateway` directory and is calling all the other microservices. <br />
     - [x] Permissions
 - [ ] Lawyers
     - [x] Getting prefecture and sermonDate
-    - [ ] Adding lawyers informations
+    - [x] Adding lawyers informations
+    - [x] Updating lawyers informations
 - [ ] Articles
     - [ ] CRUD on articles
     - [ ] CRUD on comments
