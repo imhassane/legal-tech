@@ -2,9 +2,11 @@
 scalar DateTime
 
 extend type Query {
+    domains(start: Int!, limit: Int!): [Domain!]
     domain(id: ID!): Domain!
 }
 
 extend type Mutation {
     newDomain(name: String!, description: String!): Domain!
+    setDomainArticle(id: ID!, articleId: ID!): Domain!
 }

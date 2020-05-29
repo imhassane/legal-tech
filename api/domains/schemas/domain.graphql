@@ -2,16 +2,24 @@ type Domain @key(fields: "id") {
     id: ID!
     name: String!
     description: String!
+    article: Article @provides(fields: "id")
+    lawyers: [Member!]
+    insertedAt: DateTime!
+    updatedAt: DateTime!
 }
 
+type MemberDomains {
+    first:   Domain
+    second: Domain
+    third:  Domain
+    all:    [Domain!]
+}
 
-extend type Company @key(fields: "id") {
+extend type Article @key(fields: "id") {
     id: ID! @external
-    domains: [Domain!]!
 }
 
 extend type Member @key(fields: "id") {
     id: ID! @external
-    domain: Domain!
-    domains: [Domain!]!
+    domains: [Domain!]
 }
