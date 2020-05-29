@@ -29,6 +29,19 @@ const ADD_DOMAIN = `
     RETURNING *
 `;
 
+const VERIFY_DOMAIN_SET = `
+    SELECT
+        COUNT(cre_id) AS exists
+    FROM tj_domain_lawyer
+    WHERE cre_id = $1 AND dom_id = $2
+`;
+
+const ADD_LAWYER_DOMAIN = `
+    INSERT INTO tj_domain_lawyer
+    VALUES ($2, $1)
+    RETURNING *
+`;
+
 module.exports = {
 
     Query: {
@@ -60,8 +73,32 @@ module.exports = {
             const { rows } = await pool.query(ADD_DOMAIN, [data.name, data.description]);
             return convertToSchema(rows[0]);
         },
-        setDomainArticle: async (_parent, data, {pool}) => {
+        setDomainArticle: async (_parent, data, {pool, user, permissions}) => {
 
+        },
+        setLawyerDomain: async (_parent, data, {pool, user, permissions}) => {
+            if(!user)
+                throw new Error("Vous devez vous connecter pour éffectuer cette action");
+
+            data.lawyerId = parseInt(data.lawyerId);
+            data.domainId = parseInt(data.domainId);
+
+            const {rows} = await pool.query(VERIFY_DOMAIN_SET, [data.lawyerId, data.domainId]);
+            if(rows.length && parseInt(rows[0].exists) > 0)
+                throw new Error("Ce membre a déjà ajouté ce domaine à ses compétences");
+
+
+            if(data.lawyerId === user) {
+                await pool.query(ADD_LAWYER_DOMAIN, [data.lawyerId, data.domainId]);
+                return "Vous avez ce domaine comme votre compétence";
+            } else {
+                if (!permissions || !permissions.includes('SUPREME')) {
+                    throw new Error("Vous n'avez pas les permissions nécessaires pour éffectuer cette action");
+                } else {
+                    await pool.query(ADD_LAWYER_DOMAIN, [data.lawyerId, data.domainId]);
+                    return "Vous avez rajouté ce domaine comme compétence de cet avocat";
+                }
+            }
         }
     }
 

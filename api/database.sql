@@ -88,4 +88,20 @@ create table t_domain_dom
 create unique index t_domain_dom_dom_name_uindex
 	on t_domain_dom (dom_name);
 
+create table tj_domain_lawyer
+(
+	dom_id int not null
+		constraint tj_domain_lawyer_t_domain_dom_dom_id_fk
+			references t_domain_dom
+				on delete restrict,
+	cre_id int not null
+		constraint tj_domain_lawyer_t_credentials_cre_cre_id_fk
+			references t_credentials_cre,
+	constraint tj_domain_lawyer_pk
+		unique (dom_id, cre_id)
+);
+
+create type lawyer_domain_type as enum ('MAIN', 'SKILL');
+alter table tj_domain_lawyer
+	add type lawyer_domain_type default 'SKILL' not null;
 

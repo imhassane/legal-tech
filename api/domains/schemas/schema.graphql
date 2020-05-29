@@ -9,4 +9,5 @@ extend type Query {
 extend type Mutation {
     newDomain(name: String!, description: String!): Domain!
     setDomainArticle(id: ID!, articleId: ID!): Domain!
+    setLawyerDomain(lawyerId: ID!, domainId: ID!): String!
 }
