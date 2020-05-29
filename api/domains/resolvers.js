@@ -1,3 +1,4 @@
+const db = require('./database');
 const { convertToSchema } = require('./helper');
 
 // TODO: Adding join with the article table.
@@ -42,7 +43,28 @@ const ADD_LAWYER_DOMAIN = `
     RETURNING *
 `;
 
+const GET_MEMBER_DOMAINS = `
+    SELECT
+        dom_id as id,
+        dom_name as name,
+        dom_description as description,
+        dom_inserted_at as insertedAt,
+        dom_updated_at as updatedAt,
+        type
+    FROM t_domain_dom
+    JOIN tj_domain_lawyer USING (dom_id)
+    WHERE cre_id = $1
+`;
+
+
 module.exports = {
+
+    Member: {
+        domains: async (member) => {
+            const { rows } = await db.query(GET_MEMBER_DOMAINS, [member.id]);
+            return rows;
+        }
+    },
 
     Query: {
         domains: async (_parent, data, {pool}) => {
