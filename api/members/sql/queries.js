@@ -1,6 +1,6 @@
 const INSERT_CREDENTIALS = `
-    INSERT INTO t_credentials_cre(cre_email, cre_password)
-    VALUES ($1, $2)
+    INSERT INTO t_credentials_cre(cre_email, cre_password, cre_status)
+    VALUES ($1, $2, 'PENDING')
     RETURNING cre_id
 `;
 
