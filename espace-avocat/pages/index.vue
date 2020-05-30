@@ -1,10 +1,10 @@
 <template >
   <div >
-    <div class =" flex-auto border-solid border-4 border-gray-600 " >
+    
+     <div class =" flex-auto border-solid border-4 border-gray-600 " >
       <h1 class=" text-xl text-right font-semibold text-blue-900">ESPACE DE CONNEXION AVOCAT</h1>
       logo
     </div>
-    
     <div class=" shadow-lg  sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl bg-gray-300  flex content-center justify-center  items-center">
       <div class="  bg-white rounded-lg p-6 m-7 my-6  md:box-content ">
         <div class="flex">
@@ -24,11 +24,11 @@
             </div>
             <hr class="my-8">
             <div class="my-6">
-            <a href= "#" >Mot de passe oublié?</a>
-            <button type="submit" class="bg-blue-700 text-white px-2 py-2 rounded hover:bg-blue-800">Se connecter</button>
+              <a href= "#" >Mot de passe oublié?</a>
+                <button type="submit" class="bg-blue-700 text-white px-2 py-2 rounded hover:bg-blue-800">Se connecter</button>
+            </div>
           </div>
         </div>
-      </div>
       </div>
     </div>
   </div>
@@ -41,7 +41,7 @@
 
 
 export default {
- 
+
  
 }
 </script>

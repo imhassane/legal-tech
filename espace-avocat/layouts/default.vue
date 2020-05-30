@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import nav from '@/components/header'
+import header from '@/components/header';
 
 export default {
  components: { header }
