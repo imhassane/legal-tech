@@ -56,9 +56,46 @@ const GET_MEMBER_DOMAINS = `
     WHERE cre_id = $1
 `;
 
+const DOMAIN_LAWYERS = `
+    SELECT
+        cre_id as id, cre_email as email,
+        mem_first_name as firstName,
+        mem_last_name as lastName,
+        mem_avatar as avatar,
+        mem_type as type, mem_description as description
+    FROM t_member_mem
+    JOIN t_credentials_cre USING (cre_id)
+    JOIN tj_domain_lawyer  USING (cre_id)
+    WHERE dom_id = $1
+`;
+
 
 module.exports = {
-
+    
+    Domain: {
+        lawyers: async (domain) => {
+            let { rows } = await db.query(DOMAIN_LAWYERS, [domain.id]);
+            rows = rows.map(r => {
+                if(r.email) {
+                    if(!r.credentials)
+                        r.credentials = {};
+                    r.credentials.email = r.email;
+                    delete r.email;
+                }
+               if(r.firstname) {
+                   r.firstName = r.firstname;
+                   delete r.firstname;
+               }
+               if(r.lastname) {
+                   r.lastName = r.lastname;
+                   delete r.lastname;
+               }
+               return r;
+            });
+            return rows;
+        }
+    },
+    
     Member: {
         domains: async (member) => {
             const { rows } = await db.query(GET_MEMBER_DOMAINS, [member.id]);
