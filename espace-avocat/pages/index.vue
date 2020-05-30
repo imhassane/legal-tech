@@ -1,77 +1,51 @@
-<template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        espace-avocat
-      </h1>
-      <h2 class="subtitle">
-        The lawyer admin website
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
+<template >
+  <div >
+    <div class =" flex-auto border-solid border-4 border-gray-600 " >
+      <h1 class=" text-xl text-right font-semibold text-blue-900">ESPACE DE CONNEXION AVOCAT</h1>
+      logo
+    </div>
+    
+    <div class=" shadow-lg  sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl bg-gray-300  flex content-center justify-center  items-center">
+      <div class="  bg-white rounded-lg p-6 m-7 my-6  md:box-content ">
+        <div class="flex">
+          <div classs="shadow sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl">
+            <img :src="'photo.jpg'" class="max-w-lg   sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mr-12  "/>
+          </div>
+          <div classs="shadow sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl">
+            <h3 class ="text-center text-blue-900 font-bold my-6" >LOGIN</h3>
+            <hr class="my-2">
+            <div class ="mb-6 my-6">
+              <label for ="mail" class="block">E-mail</label>
+              <input type="email" id="mail" placeholder=" Votre mail" class =" rounded border shadow-inner py-2 py-2 text-gray-800">
+            </div>
+            <div class ="mb-6">
+              <label for ="password" class="block">Mot de passe</label>
+              <input type="password" id="password" placeholder=" Votre mot de passe" class =" rounded border shadow-inner py-2 py-2 text-gray-800 ">
+            </div>
+            <hr class="my-8">
+            <div class="my-6">
+            <a href= "#" >Mot de passe oublié?</a>
+            <button type="submit" class="bg-blue-700 text-white px-2 py-2 rounded hover:bg-blue-800">Se connecter</button>
+          </div>
+        </div>
+      </div>
       </div>
     </div>
   </div>
+
+    
+  
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+
 
 export default {
-  components: {
-    Logo
-  }
+ 
+ 
 }
 </script>
 
 <style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
 </style>
