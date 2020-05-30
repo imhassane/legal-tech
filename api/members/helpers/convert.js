@@ -32,20 +32,21 @@ const makeSchemaOfMember = (data) => {
 };
 
 const makeSchemaOfCredentials = (data) => {
+    data.credentials = {};
     if(data.cre_id) {
-        data.id = data.cre_id;
+        data.credentials.id = data.cre_id;
         delete data.cre_id;
     }
     if(data.cre_email) {
-        data.email = data.cre_email;
+        data.credentials.email = data.cre_email;
         delete data.cre_email;
     }
     if(data.cre_inserted_at) {
-        data.insertedAt = data.cre_inserted_at;
+        data.credentials.insertedAt = data.cre_inserted_at;
         delete data.cre_inserted_at;
     }
     if(data.cre_updated_at) {
-        data.updatedAt = data.cre_updated_at;
+        data.credentials.updatedAt = data.cre_updated_at;
         delete data.cre_updated_at;
     }
     return data;
