@@ -4,13 +4,13 @@
       <h1 class=" text-xl text-right font-semibold text-blue-900">ESPACE DE CONNEXION AVOCAT</h1>
       logo
     </div>
-    
+    <div>
+      <nuxt />
+    </div>
   </div>
 </template>
 <script>
-
-
 export default {
- 
+  name: 'auth-layout'
 }
 </script>

@@ -1,16 +1,10 @@
 <template >
-  <div >
-    <div class =" flex-auto border-solid border-4 border-gray-600 " >
-      <h1 class=" text-xl text-right font-semibold text-blue-900">ESPACE DE CONNEXION AVOCAT</h1>
-      logo
-    </div>
-    
-    <div class=" shadow-lg  sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl bg-gray-300  flex content-center justify-center  items-center">
-      <div class="  bg-white rounded-lg p-6 m-7 my-6  md:box-content ">
-      <div class="flex">
-        <div classs="shadow sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl">
-        <img :src="'photo.jpg'" class="max-w-lg   sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl mr-12  "/>
-        </div>
+  <div>
+    <div class="md:flex shadow-lg  sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl bg-gray-300  flex content-center justify-center  items-center">
+      <div classs="hidden md:block shadow sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl">
+        <img :src="'photo.jpg'" class="max-w-lg sm:max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl"/>
+      </div>
+      <div class="bg-white rounded-lg p-6 m-7 my-6  md:box-content "></div>
         <div classs="shadow sm:shadow-md md:shadow-lg lg:shadow-xl xl:shadow-2xl">
         <h3 class ="text-center text-blue-900 font-bold my-6" >LOGIN</h3>
         <hr class="my-2">
@@ -28,21 +22,16 @@
           <button type="submit" class="bg-blue-700 text-white px-2 py-2 rounded hover:bg-blue-800">Se connecter</button>
        </div>
       </div>
-      </div>
-      </div>
     </div>
   </div>
-
-    
-  
 </template>
 
 <script>
 
 
 export default {
- 
- 
+
+
 }
 </script>
 

@@ -1,15 +1,17 @@
 <template>
   <div>
-    <header/>
-    <nuxt />
+    <page-header/>
+    <div class="bg-gray-200" style="min-height: 100vh">
+      <nuxt />
+    </div>
   </div>
 </template>
 
 <script>
-import header from '@/components/header';
+import PageHeader from '@/components/header';
 
 export default {
- components: { header }
+ components: { PageHeader }
 }
 </script>
 
