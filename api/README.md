@@ -23,9 +23,14 @@ the `gateway` directory and is calling all the other microservices. <br />
 - [ ] Laws
     - [ ] CRUD on laws
 - [ ] Contacts
-    - [ ] CRUD on contacts
+    - [x] Displaying member's contact
+    - [x] Adding member's contact
+    - [ ] Adding company's contact
 - [ ] Education
-    - [ ] CRUD on education
+    - [x] Adding a formation for a member
+    - [x] Displaying member's formations
+    - [ ] Updating a formation
+    - [ ] Deleting a formation
 - [ ] Companies
     - [ ] CRUD on companies
 - [ ] Documents
