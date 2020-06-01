@@ -144,3 +144,47 @@ create unique index t_contact_con_con_email_uindex
 	on t_contact_con (con_email);
 
 alter table t_contact_con rename column con_webiste to con_website;
+
+create table t_company_com
+(
+	com_id serial
+		constraint t_company_com_pk
+			primary key,
+	com_name varchar(100) not null,
+	com_prefecture varchar(50) default 'Conakry' not null,
+	com_description text default 'Aucune description' not null,
+	com_inserted_at timestamp default now() not null,
+	com_updated_at timestamp default now(),
+	com_created_at date not null
+);
+
+create table tj_member_company
+(
+	com_id int not null
+		constraint tj_member_company_t_company_com_com_id_fk
+			references t_company_com
+				on delete restrict,
+	cre_id int not null
+		constraint tj_member_company_t_credentials_cre_cre_id_fk
+			references t_credentials_cre
+				on delete restrict,
+	entry_date date not null,
+	end_date date,
+	constraint tj_member_company_pk
+		primary key (com_id, cre_id)
+);
+
+alter type permission add value 'ADD_DOMAIN';
+alter type permission add value 'ADD_COMPANY'
+alter type permission add value 'UPDATE_COMPANY';
+alter type permission add value 'DELETE_COMPANY';
+alter type permission add value 'ADD_CONTACT';
+alter type permission add value 'DELETE_CONTACT';
+alter type permission add value 'UPDATE_CONTACT';
+
+alter table t_company_com
+	add com_identification varchar(30) not null;
+
+create unique index t_company_com_com_identification_uindex
+	on t_company_com (com_identification);
+
