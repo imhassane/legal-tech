@@ -1,9 +1,29 @@
 # import Company from "./company.graphql"
 scalar DateTime
 
-type MemberCompany {
-    current: Company
-    past: [Company!]
+type MemberCompanyDetails @key(fields: "company { id }") {
+    entryDate: DateTime!
+    endDate: DateTime
+    status: String!
+    company: Company!
+}
+
+type CompanyMemberDetails @key(fields: "entryDate"){
+    entryDate: DateTime!
+    endDate: DateTime
+    status: String!
+    member: Member! @provides(fields: "firstName lastName avatar")
+}
+
+type MemberCompany @key(fields: "current { company { id } }") {
+    current: MemberCompanyDetails
+    past: [MemberCompanyDetails!]
+}
+
+type CompanyMembers @key(fields: "current { current { company { id } } }") {
+    current: [CompanyMemberDetails!]
+    out: [CompanyMemberDetails!]
+    all: [CompanyMemberDetails!]
 }
 
 extend type Member @key(fields: "id") {
@@ -11,7 +31,7 @@ extend type Member @key(fields: "id") {
     firstName: String! @external
     lastName: String! @external
     avatar: String! @external
-    company: MemberCompany
+    companies: MemberCompany
 }
 
 input NewCompanyInput {
