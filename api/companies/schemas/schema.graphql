@@ -1,6 +1,19 @@
 # import Company from "./company.graphql"
 scalar DateTime
 
+type MemberCompany {
+    current: Company
+    past: [Company!]
+}
+
+extend type Member @key(fields: "id") {
+    id: ID! @external
+    firstName: String! @external
+    lastName: String! @external
+    avatar: String! @external
+    company: MemberCompany
+}
+
 input NewCompanyInput {
     name: String!
     prefecture: String!

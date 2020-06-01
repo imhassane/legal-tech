@@ -1,3 +1,8 @@
+type MemberCompany {
+    current: Company
+    past: [Company!]
+}
+
 type Company @key(fields: "id") {
     id: ID!
     name: String!
@@ -5,4 +10,13 @@ type Company @key(fields: "id") {
     createdAt: DateTime!
     description: String!
     identification: String!
+    members: [Member!] @provides(fields: "firstName lastName avatar")
+}
+
+extend type Member @key(fields: "id") {
+    id: ID! @external
+    firstName: String! @external
+    lastName: String! @external
+    avatar: String! @external
+    company: MemberCompany
 }
