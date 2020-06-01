@@ -19,7 +19,7 @@ const GET_EDUCATION = `
 
 module.exports = {
     Member: {
-        educations: async (member) => {
+        formations: async (member) => {
             const { rows } = await pool.query(GET_EDUCATION, [member.id]);
             return rows;
         }

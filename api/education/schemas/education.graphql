@@ -1,7 +1,7 @@
 enum EducationType {
     CEPE
     BEPC
-    BACCALEAUREAT
+    BACCALAUREAT
     LICENCE
     MASTER_1
     MASTER_2

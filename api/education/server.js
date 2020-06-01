@@ -3,7 +3,7 @@ const { importSchema } = require('graphql-import');
 const { buildFederatedSchema } = require('@apollo/federation');
 const environment = require('dotenv');
 
-const GrapqhDatetime = require('graphql-type-datetime');
+const GraphqlDatetime = require('graphql-type-datetime');
 
 const databasePool = require('./database');
 
@@ -13,7 +13,7 @@ environment.config();
 const typeDefs = gql(importSchema("./schemas/schema.graphql"));
 
 const resolvers = {
-    DateTime: GrapqhDatetime,
+    DateTime: GraphqlDatetime,
     ...require('./resolvers')
 };
 

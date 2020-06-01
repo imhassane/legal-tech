@@ -1,6 +1,11 @@
 # import Education from "./education.graphql"
 scalar DateTime
 
+extend type Member @key(fields: "id") {
+    id: ID! @external
+    formations: [Education!]
+}
+
 extend type Mutation {
     newEducation(name: String!, type: String!, year: Int!): String!
     updateEducation(id: ID!, name: String, type: EducationType, year: Int): String!
