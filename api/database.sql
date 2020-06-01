@@ -188,3 +188,6 @@ alter table t_company_com
 create unique index t_company_com_com_identification_uindex
 	on t_company_com (com_identification);
 
+alter table tj_member_company
+	add status varchar(20) default 'Avocat' not null;
+
