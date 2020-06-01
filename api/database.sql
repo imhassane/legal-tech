@@ -143,3 +143,4 @@ create table t_contact_con
 create unique index t_contact_con_con_email_uindex
 	on t_contact_con (con_email);
 
+alter table t_contact_con rename column con_webiste to con_website;
