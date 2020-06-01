@@ -61,7 +61,8 @@ const context = async ({ req }) => {
 const server = new ApolloServer({
     gateway,
     context,
-    subscriptions: false
+    subscriptions: false,
+    tracing: true
 });
 
 server.listen({port: 5000}).then(({url}) => {
