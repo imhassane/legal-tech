@@ -104,6 +104,29 @@ const updatePersonnalInformations = async () => {
 
 const updateMemberType = async () => {};
 
+const addMemberPermission = async (_p, {userId, permission}, {pool, user, permissions}) => {
+    if(!user)
+        throw new Error("Vous devez vous connecter pour éffectuer cette action");
+
+    if(!permissions.includes("SUPREME"))
+        throw new Error("Vous n'avez pas les permissions nécessaires pour ajouter une permission");
+
+    if(!userId)
+        userId = user;
+
+    try {
+        const { rows } = await pool.query(sql.VERIFIY_MEMBER_PERMISSION, [userId, permission]);
+        if(parseInt(rows[0].exists))
+            throw new Error("Cette permission a déjà été attribuée à cet utilisateur");
+
+        await pool.query(sql.ADD_PERMISSION, [userId, permission]);
+        return permission;
+    } catch(ex) {
+        // TODO: Logging.
+        throw ex;
+    }
+};
+
 module.exports = {
     Query: {
         members,
@@ -112,6 +135,7 @@ module.exports = {
     Mutation: {
         newMember,
         updatePersonnalInformations,
-        updateMemberType
+        updateMemberType,
+        addMemberPermission
     }
 }

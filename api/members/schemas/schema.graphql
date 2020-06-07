@@ -25,6 +25,7 @@ extend type Query {
 }
 
 extend type Mutation {
+    addMemberPermission(userId: ID, permission: MemberPermissions!): MemberPermissions!
     newMember(data: NewMemberInput!): Member!
     updatePersonnalInformations(data: UpdateMemberInput): Member!
     updateMemberType(id: ID!, status: MemberType!): Member!

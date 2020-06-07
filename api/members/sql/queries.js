@@ -34,6 +34,13 @@ const GET_MEMBER_PERMISSION = `
     WHERE cre_id = $1
 `;
 
+const VERIFIY_MEMBER_PERMISSION = `
+    SELECT
+        COUNT(*) AS exists
+    FROM tj_credentials_permission
+    WHERE cre_id = $1 AND permission = $2
+`;
+
 const ADD_PERMISSION = `
     INSERT INTO tj_credentials_permission
     VALUES ($1, $2)
@@ -45,5 +52,6 @@ module.exports = {
 
     MEMBER_EXISTS, GET_MEMBER,
 
-    ADD_PERMISSION, GET_MEMBER_PERMISSION
+    ADD_PERMISSION, GET_MEMBER_PERMISSION,
+    VERIFIY_MEMBER_PERMISSION
 };
