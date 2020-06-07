@@ -8,6 +8,8 @@ the `gateway` directory and is calling all the other microservices. <br />
 - [x] Members
     - [x] Authentication
     - [x] Permissions
+    - [x] Adding permissions
+    - [x] Removing permissions
 - [ ] Lawyers
     - [x] Getting prefecture and sermonDate
     - [x] Adding lawyers informations

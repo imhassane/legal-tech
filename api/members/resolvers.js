@@ -115,7 +115,7 @@ const addMemberPermission = async (_p, {userId, permission}, {pool, user, permis
         userId = user;
 
     try {
-        const { rows } = await pool.query(sql.VERIFIY_MEMBER_PERMISSION, [userId, permission]);
+        const { rows } = await pool.query(sql.VERIFY_MEMBER_PERMISSION, [userId, permission]);
         if(parseInt(rows[0].exists))
             throw new Error("Cette permission a déjà été attribuée à cet utilisateur");
 
@@ -127,6 +127,28 @@ const addMemberPermission = async (_p, {userId, permission}, {pool, user, permis
     }
 };
 
+const removeMemberPermission = async (_p, {userId, permission}, {pool, user, permissions}) => {
+    if(!user)
+        throw new Error("Vous devez être connecté pour supprimer une permission");
+    if(!permissions.includes("SUPREME"))
+        throw new Error("Vous n'avez pas les permissions nécessaires pour supprimer cette permission");
+    if(!userId)
+        userId = user;
+
+    try {
+        const { rows } = await pool.query(sql.VERIFY_MEMBER_PERMISSION, [userId, permission]);
+        if(!parseInt(rows[0].exists))
+            throw new Error("Cette permission n'est pas attribuée à cette personne");
+
+        await pool.query(sql.REMOVE_PERMISSION, [userId, permission]);
+
+        return permission;
+    } catch(ex) {
+        // TODO: logging.
+        throw ex;
+    }
+}
+
 module.exports = {
     Query: {
         members,
@@ -136,6 +158,7 @@ module.exports = {
         newMember,
         updatePersonnalInformations,
         updateMemberType,
-        addMemberPermission
+        addMemberPermission,
+        removeMemberPermission
     }
 }
