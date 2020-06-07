@@ -25,11 +25,3 @@ type Article @key(fields: "id") {
     comments: [Comment!]!
     author: Member! @provides(fields: "id firstName lastName avatar")
 }
-
-extend type Member @key(fields: "id"){
-    id: Int! @external
-    firstName: String! @external
-    lastName: String! @external
-    avatar: String @external
-    articles: [Article!]!
-}

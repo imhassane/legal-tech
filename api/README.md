@@ -27,7 +27,7 @@ the `gateway` directory and is calling all the other microservices. <br />
 - [ ] Contacts
     - [x] Displaying member's contact
     - [x] Adding member's contact
-    - [ ] Adding company's contact
+    - [x] Adding company's contact
 - [ ] Education
     - [x] Adding a formation for a member
     - [x] Displaying member's formations

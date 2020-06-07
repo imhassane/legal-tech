@@ -1,5 +1,13 @@
 # import Article from "./article.graphql"
 
+extend type Member @key(fields: "id"){
+    id: Int! @external
+    firstName: String! @external
+    lastName: String! @external
+    avatar: String @external
+    articles: [Article!]!
+}
+
 extend type Query {
     articles(start: Int!, limit: Int!): [Article!]
     article(id: ID!): Article!

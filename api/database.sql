@@ -191,3 +191,41 @@ create unique index t_company_com_com_identification_uindex
 alter table tj_member_company
 	add status varchar(20) default 'Avocat' not null;
 
+create type article_type as enum ('BLOG', 'REVUE', 'PAGE',
+    'DOMAIN', 'ACTU',
+    'PRESS', 'FOREIGN');
+
+create type article_state as enum ('DRAFT', 'PENDING', 'DELETED', 'APPROVED');
+
+create table t_article_art
+(
+	art_id serial
+		constraint t_article_art_pk
+			primary key,
+	art_title varchar(200) not null,
+	art_slug text not null,
+	art_content text default 'Aucun contenu' not null,
+	art_type article_type default 'BLOG' not null,
+	art_status article_state default 'PENDING' not null,
+	art_views int default 0 not null,
+	art_reading_time int default 0 not null,
+	art_extract varchar(100),
+	art_cover text,
+	cre_id int not null
+		constraint t_article_art_t_credentials_cre_cre_id_fk
+			references t_credentials_cre,
+	art_approved_by int not null
+		constraint t_article_art_t_credentials_cre_cre_id_fk_2
+			references t_credentials_cre,
+	art_created_at timestamp default now() not null,
+	art_updated_at timestamp default now() not null
+);
+
+create table tj_article_likes
+(
+	art_id int not null
+		constraint tj_article_likes_t_article_art_art_id_fk
+			references t_article_art,
+	ip_address varchar(50) not null
+);
+
