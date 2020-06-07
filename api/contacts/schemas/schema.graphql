@@ -16,11 +16,16 @@ extend type Member @key(fields: "id") {
     contact: Contact
 }
 
+extend type Company @key(fields: "id") {
+    id: ID! @external
+    contact: Contact
+}
+
 extend type Query {
     contact(id: ID): Contact
 }
 
 extend type Mutation {
-    newCompanyContact(id: ID, data: NewContactInput!): Contact!
+    newCompanyContact(id: ID!, data: NewContactInput!): Contact!
     newUserContact(id: ID, data: NewContactInput!): Contact!
 }

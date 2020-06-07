@@ -34,7 +34,12 @@ the `gateway` directory and is calling all the other microservices. <br />
     - [ ] Updating a formation
     - [ ] Deleting a formation
 - [ ] Companies
-    - [ ] CRUD on companies
+    - [x] Adding a company
+    - [x] Company members
+    - [x] Member's companies
+    - [x] Companies list
+    - [ ] Updating a company
+    - [ ] Deleting a company (Not sure If I want to do this one yet)
 - [ ] Documents
     - [ ] CRUD on documents
 - [ ] Videos
