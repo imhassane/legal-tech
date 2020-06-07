@@ -1,3 +1,9 @@
+const readingTime = require('reading-time');
+const slugify = require('slugify');
+
+const pool = require('../database');
+const sql = require('./queries');
+
 const convertToArticle = article => {
     if(article.art_id) article.id = article.art_id;
     if(article.art_title) article.title = article.art_title;
@@ -27,19 +33,88 @@ const convertToArticle = article => {
     return article;
 };
 
-const articles = () => {
-    return [];
+const verifyPermissionsAndType = (permissions, type) => {
+    if(permissions.includes("SUPREME") || permissions.includes("WRITE_ALL_POSTS")) return true;
+    if(type === "BLOG" && permissions.includes("WRITE_BLOG_POST")) return true;
+    else if (type === "REVUE" && permissions.includes("WRITE_REVUE")) return true;
+    else if (type === "DOMAIN" && permissions.includes("WRITE_DOMAIN")) return true;
+    else if (type === "FOREIGN" && permissions.includes("WRITE_FOREIGN_POSTS")) return true;
+    else if (type === "ACTU" && permissions.includes("WRITE_NEWS")) return true;
+    else if (type === "PRESS" && permissions.includes("WRITE_PRESS")) return true;
+    else if (type === "PAGE" && permissions.includes("WRITE_PAGE")) return true;
+    return false;
 };
 
-const article = () => {
-    return {};
+const verifyArticle = article => {
+  if(article.title && article.title.trim().length < 5)
+      throw new Error("Le titre doit contenir au moins 5 caractères");
+  if(article.extract && article.extract.trim().length < 20)
+      throw new Error("L'extrait de l'article doit contenir au moins 20 caractères");
 };
 
-const articleBySlug = () => {
-    return {};
+const articles = async (_p, data) => {
+    const { rows } = await pool.query(sql.GET_ARTICLES, [data.state, data.start, data.limit]);
+    return rows.map(r => convertToArticle(r));
 };
 
-const newArticle = () => {};
+const getMemberArticles = async (member) => {
+    const { rows } = await pool.query(sql.GET_MEMBER_ARTICLES, [member]);
+    return rows.map(r => convertToArticle(r));
+};
+
+const article = async (_p, data, {user}) => {
+    const { rows } = await pool.query(sql.GET_ARTICLE, [data.id]);
+    if(!rows.length)
+        throw new Error("Cet article n'existe pas");
+    // If the current user is not a member
+    // we update the article's views.
+    if(!user) {
+        try {
+            await pool.query("UPDATE t_article_art SET art_views = art_views + 1 WHERE art_id = $1", [rows[0].art_id]);
+        } catch(ex) {
+            // TODO: Logging.
+            throw ex;
+        }
+    }
+    return convertToArticle(rows[0]);
+};
+
+const articleBySlug = async () => {
+    const { rows } = await pool.query(sql.GET_ARTICLE, [data.id]);
+    if(!rows.length)
+        throw new Error("Cet article n'existe pas");
+    // If the current user is not a member
+    // we update the article's views.
+    if(!user) {
+        try {
+            await pool.query("UPDATE t_article_art SET art_views = art_views + 1 WHERE art_id = $1", [rows[0].art_id]);
+        } catch(ex) {
+            // TODO: Logging.
+            throw ex;
+        }
+    }
+    return convertToArticle(rows[0]);
+};
+
+const newArticle = async (_p, data, {user, permissions}) => {
+    if(!user)
+        throw new Error("Vous devez vous connecter pour écrire un article");
+    if(!verifyPermissionsAndType(permissions, data.type))
+        throw new Error("Vous n'avez pas les permissions nécessaires pour écrire un article");
+
+    verifyArticle(data);
+    data.readingTime = readingTime(data.content).time;
+    data.slug = slugify(data.title);
+
+    data = [user, data.title, data.extract, data.content, data.slug, data.readingTime, data.type, data.cover];
+    try {
+        const { rows } = await pool.query(sql.INSERT_ARTICLE, data);
+        return convertToArticle(rows[0]);
+    } catch(ex) {
+        // TODO: Logging.
+        throw ex;
+    }
+};
 
 const updateArticle = () => {};
 
@@ -58,6 +133,9 @@ const updateCommentState = () => {};
 const deleteComment = () => {};
 
 module.exports = {
+    Member: {
+      articles: async (member) => await getMemberArticles(member.id),
+    },
     Query: {
         articles,
         article,

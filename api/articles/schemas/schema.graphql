@@ -1,25 +1,26 @@
 # import Article from "./article.graphql"
 
 extend type Member @key(fields: "id"){
-    id: Int! @external
+    id: ID! @external
     firstName: String! @external
     lastName: String! @external
-    avatar: String @external
+    avatar: String! @external
     articles: [Article!]!
 }
 
 extend type Query {
-    articles(start: Int!, limit: Int!): [Article!]
+    articles(state: ArticleState!, start: Int!, limit: Int!): [Article!]
     article(id: ID!): Article!
     articleBySlug(slug: String!): Article!
 }
 
 extend type Mutation {
-    newArticle(title: String!, content: String!, extract: String!, cover: String!, type: String!): Article!
+    newArticle(title: String!, content: String!, extract: String!, cover: String!, type: ArticleType!): Article!
     updateArticle(id: ID!, title: String, content: String, extract: String): Article!
     updateArticleCover(id: ID!, cover: String!): Article!
     updateArticleState(id: ID!, state: ArticleState): Article!
     deleteArticle(id: ID!): Article!
+    approveArticle(id: ID!): Article!
 
     newArticleComment(articleId: Int!, authorId: ID, fullName: String, email: String, content: String): Comment!
     newCommentReply(articleId: Int!, commentId: Int!, authorId: ID, fullName: String, email: String, content: String): Comment!
