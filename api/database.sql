@@ -206,7 +206,7 @@ create table t_article_art
 	art_slug text not null,
 	art_content text default 'Aucun contenu' not null,
 	art_type article_type default 'BLOG' not null,
-	art_status article_state default 'PENDING' not null,
+	art_state article_state default 'PENDING' not null,
 	art_views int default 0 not null,
 	art_reading_time int default 0 not null,
 	art_extract varchar(100),
@@ -214,11 +214,12 @@ create table t_article_art
 	cre_id int not null
 		constraint t_article_art_t_credentials_cre_cre_id_fk
 			references t_credentials_cre,
-	art_approved_by int not null
+	art_approved_by int
 		constraint t_article_art_t_credentials_cre_cre_id_fk_2
 			references t_credentials_cre,
 	art_created_at timestamp default now() not null,
-	art_updated_at timestamp default now() not null
+	art_updated_at timestamp default now() not null,
+	art_likes int default 0 not null;
 );
 
 create table tj_article_likes
