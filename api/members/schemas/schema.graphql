@@ -20,7 +20,7 @@ input UpdateMemberInput {
 }
 
 extend type Query {
-    members(start: Int!, limit: Int!): [Member!]!
+    members(type: MemberType!, start: Int!, limit: Int!): [Member!]!
     member(id: ID!): Member!
 }
 
