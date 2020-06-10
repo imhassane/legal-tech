@@ -142,7 +142,26 @@ const updateArticle = async (_p, {id, title, extract, content}, {user}) => {
     }
 };
 
-const updateArticleCover = () => {};
+const updateArticleCover = async (_p, {id, cover}, {user}) => {
+    if(!user)
+        throw new Error("Vous devez vous connecter pour mettre à jour l'article");
+
+    try {
+        let query = "SELECT cre_id FROM t_article_art WHERE art_id = $1";
+        const { rows } = await pool.query(query, [id]);
+        if(!rows.length)
+            throw new Error("Cet article n'existe pas");
+        if(rows[0].cre_id !== user)
+            throw new Error("Vous n'avez pas la permission de modifier cet article");
+
+        query = "UPDATE t_article_art SET art_updated_at = NOW(), art_cover = $2 WHERE art_id = $1 RETURNING *";
+        const result = await pool.query(query, [id, cover]);
+        return convertToArticle(result.rows[0]);
+    } catch(ex) {
+        // TODO: Logging.
+        throw ex;
+    }
+};
 
 const updateArticleState = () => {};
 
