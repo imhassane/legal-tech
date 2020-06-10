@@ -10,6 +10,7 @@ the `gateway` directory and is calling all the other microservices. <br />
     - [x] Permissions
     - [x] Adding permissions
     - [x] Removing permissions
+    - [ ] Members(type: "LAWYER")
 - [ ] Lawyers
     - [x] Getting prefecture and sermonDate
     - [x] Adding lawyers informations
@@ -17,7 +18,9 @@ the `gateway` directory and is calling all the other microservices. <br />
 - [ ] Articles
     - [x] Adding articles
     - [x] List of articles / Details
-    - [ ] Update an article
+    - [x] Update an article
+    - [ ] Approve the article
+    - [ ] Update an article type
     - [ ] Delete an article
     - [ ] CRUD on comments
 - [ ] Domains
