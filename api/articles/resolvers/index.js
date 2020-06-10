@@ -116,7 +116,31 @@ const newArticle = async (_p, data, {user, permissions}) => {
     }
 };
 
-const updateArticle = () => {};
+const updateArticle = async (_p, {id, title, extract, content}, {user}) => {
+    if(!user)
+        throw new Error("Vous devez vous connecter pour modifier cet article");
+    let query = "SELECT cre_id FROM t_article_art WHERE art_id = $1";
+    try {
+        let {rows} = await pool.query(query, [id]);
+        if (!rows.length)
+            throw new Error("Cet article n'existe pas");
+
+        if (rows[0].cre_id !== user)
+            throw new Error("Vous n'avez pas la possibilité de modifier de cet article");
+
+        if (!title && !extract && !content)
+            throw new Error("Veuillez entrer les informations à modifier");
+
+        verifyArticle({title, extract});
+
+        query = "UPDATE t_article_art SET art_updated_at = NOW(), art_title = $1, art_extract = $2, art_content = $3 WHERE art_id = $4 RETURNING *";
+        const result = await pool.query(query, [title, extract, content, id]);
+        return convertToArticle(result.rows[0]);
+    } catch(ex) {
+        // TODO: Logging.
+        throw ex;
+    }
+};
 
 const updateArticleCover = () => {};
 

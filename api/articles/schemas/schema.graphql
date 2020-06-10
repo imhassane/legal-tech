@@ -16,7 +16,7 @@ extend type Query {
 
 extend type Mutation {
     newArticle(title: String!, content: String!, extract: String!, cover: String!, type: ArticleType!): Article!
-    updateArticle(id: ID!, title: String, content: String, extract: String): Article!
+    updateArticle(id: ID!, title: String!, content: String!, extract: String!): Article!
     updateArticleCover(id: ID!, cover: String!): Article!
     updateArticleState(id: ID!, state: ArticleState): Article!
     deleteArticle(id: ID!): Article!
