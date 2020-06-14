@@ -13,6 +13,17 @@ const INSERT_MEMBER = `
     RETURNING *
 `;
 
+const GET_MEMBERS = `
+    SELECT
+        cre_id, cre_email,
+        mem_first_name, mem_last_name, mem_avatar,
+        mem_type, mem_description
+    FROM t_member_mem
+    JOIN t_credentials_cre USING (cre_id)
+    WHERE mem_type = $1
+    OFFSET $2 LIMIT $3
+`;
+
 const MEMBER_EXISTS = `
     SELECT cre_id FROM t_credentials_cre WHERE cre_email = $1
 `;
@@ -55,7 +66,7 @@ module.exports = {
     INSERT_CREDENTIALS,
     INSERT_MEMBER,
 
-    MEMBER_EXISTS, GET_MEMBER,
+    MEMBER_EXISTS, GET_MEMBER, GET_MEMBERS,
 
     ADD_PERMISSION, GET_MEMBER_PERMISSION,
     VERIFY_MEMBER_PERMISSION,
