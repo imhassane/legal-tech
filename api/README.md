@@ -50,6 +50,8 @@ the `gateway` directory and is calling all the other microservices. <br />
     - [ ] CRUD on documents
 - [ ] Videos
     - [ ] CRUD on videos
+- [ ] Annuaires
+    
     
 ##### Architecture
 The gateway is checking if the user is authenticated by decoding the token passed in the headers.

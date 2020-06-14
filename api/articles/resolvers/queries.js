@@ -58,8 +58,22 @@ const INSERT_ARTICLE = `
     RETURNING *
 `;
 
+const UPDATE_ARTICLE_STATE = `
+    UPDATE t_article_art
+        SET art_state = $2,
+            art_approved_by = $3,
+            art_updated_at = NOW()
+    WHERE art_id = $1
+    RETURNING *
+`;
+
+const VERIFY_ARTICLE_EXISTS = `
+    SELECT COUNT(art_id) as Exists
+    FROM t_article_art WHERE art_id = $1
+`;
+
 module.exports = {
     GET_ARTICLES, GET_ARTICLE, GET_ARTICLE_BY_SLUG,
     GET_ARTICLES_LIKES, GET_APPROVED_ARTICLES_FOR_MEMBER, GET_MEMBER_ARTICLES,
-    INSERT_ARTICLE,
+    INSERT_ARTICLE, UPDATE_ARTICLE_STATE, VERIFY_ARTICLE_EXISTS
 };

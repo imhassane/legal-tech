@@ -163,9 +163,41 @@ const updateArticleCover = async (_p, {id, cover}, {user}) => {
     }
 };
 
-const updateArticleState = () => {};
+const updateArticleState = async (_p, {id, state}, {user, permissions}) => {
+    if(!user)
+        throw new Error("Vous devez vous connecter pour modifier l'état de l'article");
+    if(!(permissions.includes("SUPREME")))
+        throw new Error("Vous n'avez pas les permissions pour modifier l'état de l'article");
 
-const deleteArticle = () => {};
+    try {
+        const exists = await pool.query(sql.VERIFY_ARTICLE_EXISTS, [id]);
+        if(!exists.rows.length || !parseInt(exists.rows[0].exists))
+            throw new Error("Cet article n'existe pas");
+        const { rows } = await pool.query(sql.UPDATE_ARTICLE_STATE, [id, state, user]);
+        return convertToArticle(rows[0]);
+    } catch(ex) {
+        // TODO: Logging.
+        throw ex;
+    }
+};
+
+const deleteArticle = async (_p, {id}, {user, permissions}) => {
+    if(!user)
+        throw new Error("Vous devez vous connecter pour supprimer cet article");
+    if(!(permissions.includes("SUPREME")))
+        throw new Error("Vous n'avez pas les permissions nécessaires pour supprimer un article");
+
+    try {
+        const exists = await pool.query(sql.VERIFY_ARTICLE_EXISTS, [id]);
+        if(!exists.rows.length || !(parseInt(exists.rows[0].exists)))
+            throw new Error("Cet article n'existe pas");
+        const { rows } = await pool.query("UPDATE t_article_art SET art_state = 'DELETED' WHERE art_id = $1 RETURNING *", [id]);
+        return convertToArticle(rows[0]);
+    } catch(ex) {
+        // TODO: Logging
+        throw ex;
+    }
+};
 
 const newArticleComment = () => {};
 
