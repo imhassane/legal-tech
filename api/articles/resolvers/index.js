@@ -53,7 +53,7 @@ const verifyArticle = article => {
 };
 
 const articles = async (_p, data) => {
-    const { rows } = await pool.query(sql.GET_ARTICLES, [data.state, data.start, data.limit]);
+    const { rows } = await pool.query(sql.GET_ARTICLES, [data.state, data.type, data.start, data.limit]);
     return rows.map(r => convertToArticle(r));
 };
 
@@ -227,5 +227,13 @@ module.exports = {
         newCommentReply,
         updateCommentState,
         deleteComment
+    },
+    Article: {
+        author: async () => {
+
+        },
+        approvedBy: async () => {
+
+        }
     }
 };

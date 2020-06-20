@@ -3,8 +3,9 @@ const GET_ARTICLES = `
         art_id, art_title, art_extract, art_content, art_reading_time,
         art_slug, art_views, art_type, art_state, art_cover, art_likes
     FROM t_article_art
-    WHERE art_state = $1
-    OFFSET $2 LIMIT $3
+    WHERE art_state = $1 AND art_type = $2
+    ORDER BY art_id DESC
+    OFFSET $3 LIMIT $4
 `;
 
 const GET_MEMBER_ARTICLES = `
@@ -13,6 +14,7 @@ const GET_MEMBER_ARTICLES = `
         art_slug, art_views, art_type, art_state, art_cover, art_likes
     FROM t_article_art
     WHERE cre_id = $1
+    ORDER BY art_id DESC
     OFFSET $2 LIMIT $3
 `;
 
@@ -22,6 +24,7 @@ const GET_APPROVED_ARTICLES_FOR_MEMBER = `
         art_slug, art_views, art_type, art_state, art_cover, art_likes
     FROM t_article_art
     WHERE cre_id = $1 AND art_state = 'APPROVED'
+    ORDER BY art_id DESC
     OFFSET $2 LIMIT $3
 `;
 

@@ -9,7 +9,7 @@ extend type Member @key(fields: "id"){
 }
 
 extend type Query {
-    articles(state: ArticleState!, start: Int!, limit: Int!): [Article!]
+    articles(state: ArticleState!, type: ArticleType!, start: Int!, limit: Int!): [Article!]
     article(id: ID!): Article!
     articleBySlug(slug: String!): Article!
 }
@@ -29,9 +29,6 @@ extend type Mutation {
 }
 
 type Article {
-    author: User
-}
-
-type User {
-    articles: [Article!]!
+    author: Member
+    approvedBy: Member
 }
