@@ -230,3 +230,10 @@ create table tj_article_likes
 	ip_address varchar(50) not null
 );
 
+create table t_statistics_sta
+(
+	sta_document int default 0,
+	sta_inserted_at timestamp default now(),
+	sta_type int
+);
+
