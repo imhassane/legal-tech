@@ -70,7 +70,7 @@ const article = async (_p, data, {user}) => {
     // we update the article's views.
     if(!user) {
         try {
-            await pool.query("UPDATE t_article_art SET art_views = art_views + 1 WHERE art_id = $1", [rows[0].art_id]);
+            await pool.query("INSERT INTO t_statistics_sta VALUES ($1, NOW(), $2)", [rows[0].art_id, rows[0].art_type]);
         } catch(ex) {
             // TODO: Logging.
             throw ex;
@@ -87,7 +87,7 @@ const articleBySlug = async () => {
     // we update the article's views.
     if(!user) {
         try {
-            await pool.query("UPDATE t_article_art SET art_views = art_views + 1 WHERE art_id = $1", [rows[0].art_id]);
+            await pool.query("INSERT INTO t_statistics_sta VALUES ($1, NOW(), $2)", [rows[0].art_id, rows[0].art_type]);
         } catch(ex) {
             // TODO: Logging.
             throw ex;
