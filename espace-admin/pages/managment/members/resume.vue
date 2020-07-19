@@ -34,11 +34,17 @@
         </div>
       </div>
     </div>
+    <!-- Ajout d'un membre -->
+    <div class="my-10">
+      <h1 class="font-semibold text-2xl pb-3 border-b-4 border-gray-300 mb-5">Ajouter un membre</h1>
+      <resume-new-member />
+    </div>
   </div>
 </template>
 
 <script>
+  import ResumeNewMember from "../../../components/managment/members/new-member";
   export default {
-
+    components: {ResumeNewMember}
   }
 </script>
