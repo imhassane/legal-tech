@@ -237,3 +237,11 @@ create table t_statistics_sta
 	sta_type int
 );
 
+create table t_prefecture_pre
+(
+	pre_id serial
+		constraint t_prefecture_pre_pk
+			primary key,
+	pre_name varchar(50) not null,
+	pre_region_admin int not null
+);
