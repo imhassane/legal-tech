@@ -7,7 +7,7 @@
 <script>
   export default {
     head: () => ({
-      title: "Gestion des articles"
+      title: "Messages envoyés"
     })
   }
 </script>

@@ -6,8 +6,6 @@
 
 <script>
   export default {
-    head: () => ({
-      title: "Gestion des messages"
-    })
+    head: () => ({ title: "Nouvel évènement" })
   }
 </script>

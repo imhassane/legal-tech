@@ -11,7 +11,7 @@
         <nuxt-link to="/managment/posts/resume">Articles</nuxt-link>
       </li>
       <li class="font-semibold">
-        <nuxt-link to="/managment/messages/resume">Messages</nuxt-link>
+        <nuxt-link to="/managment/messages/received">Messages</nuxt-link>
       </li>
       <li class="font-semibold">
         <nuxt-link to="/managment/events/resume">Evenements</nuxt-link>
