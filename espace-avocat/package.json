@@ -1,7 +1,7 @@
 {
   "name": "espace-avocat",
   "version": "1.0.0",
-  "description": "The lawyer admin website",
+  "description": "Espace avocat",
   "author": "Hassane Sow",
   "private": true,
   "scripts": {
@@ -12,10 +12,10 @@
     "test": "jest"
   },
   "dependencies": {
-    "@nuxtjs/dotenv": "^1.4.0",
+    "nuxt": "^2.0.0",
+    "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "next-images": "^1.4.0",
-    "nuxt": "^2.0.0"
+    "@nuxtjs/dotenv": "^1.4.0"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^1.0.0",
