@@ -17,7 +17,10 @@
     </div>
 
     <div class="my-5 text-right">
-      <input type="button" value="Etape suivante" class="px-4 py-2 rounded-full font-semibold bg-red-700 text-white" />
+      <input type="button"
+             value="Etape suivante" class="px-4 py-2 rounded-full font-semibold bg-red-700 text-white"
+             @click="nextStep"
+      />
     </div>
   </div>
 </template>
@@ -25,5 +28,10 @@
 <script>
   export default {
     name: "sign-up-step-1",
+    methods: {
+      nextStep: function() {
+        this.$router.push("/authentication/sign-up/step-2/");
+      }
+    }
   }
 </script>

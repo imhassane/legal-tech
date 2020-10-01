@@ -10,7 +10,7 @@
 </template>
 
 <script>
-  import SignUpStep1 from "../../components/forms/sign-up-step-1";
+  import SignUpStep1 from "../../../components/forms/sign-up-step-1";
   export default {
     components: {SignUpStep1},
     layout: "visitor",

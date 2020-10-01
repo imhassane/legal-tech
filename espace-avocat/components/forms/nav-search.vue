@@ -8,7 +8,7 @@
       <ul class="flex font-semibold">
         <li class="mr-2"><nuxt-link to="/authentication/sign-in">Connexion</nuxt-link></li>
         <li class="font-light text-gray-800 mr-2">/</li>
-        <li><nuxt-link to="/authentication/sign-up">S'inscrire</nuxt-link></li>
+        <li><nuxt-link to="/authentication/sign-up/step-1/">S'inscrire</nuxt-link></li>
       </ul>
     </div>
   </div>
