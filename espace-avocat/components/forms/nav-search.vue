@@ -6,6 +6,8 @@
     </div>
     <div class="w-1/3">
       <ul class="flex font-semibold">
+        <li class="mr-2"><nuxt-link to="/">Accueil</nuxt-link></li>
+        <li class="font-light text-gray-800 mr-2">/</li>
         <li class="mr-2"><nuxt-link to="/authentication/sign-in">Connexion</nuxt-link></li>
         <li class="font-light text-gray-800 mr-2">/</li>
         <li><nuxt-link to="/authentication/sign-up/step-1/">S'inscrire</nuxt-link></li>
