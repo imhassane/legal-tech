@@ -10,7 +10,7 @@
         <box height="h-12" width="" url="/personal/contributions/" title="Côtisations" margins="m-1" />
         <box height="h-12" width="" url="/personal/help/" title="Aide juridictionnelle" margins="m-1" />
         <box height="h-12" width="" url="/personal/certificates/" title="Attestations" margins="m-1" />
-        <box height="h-12" width="" url="/personal/messages/" title="Messages" margins="m-1" />
+        <box height="h-12" width="" url="/personal/messages/received" title="Messages" margins="m-1" />
       </div>
 
     </header>

@@ -4,9 +4,9 @@
       <img src="/cancel.svg" alt="" class="object-cover h-12 p-3" @click="goBack" />
     </div>
 
-    <div>
+    <client-only>
       <new-article-form />
-    </div>
+    </client-only>
   </div>
 </template>
 

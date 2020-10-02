@@ -12,10 +12,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "nuxt": "^2.0.0",
     "@nuxtjs/axios": "^5.3.6",
+    "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
-    "@nuxtjs/dotenv": "^1.4.0"
+    "nuxt": "^2.0.0",
+    "tiptap": "^1.30.0",
+    "tiptap-extensions": "^1.33.1"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^1.0.0",
