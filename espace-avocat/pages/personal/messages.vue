@@ -1,9 +1,9 @@
 <template>
-  <div class="px-3 py-2">
+  <div class="px-3 py-10">
     <div class="flex flex-wrap">
 
-      <div class="w-full  md:w-2/12">
-        <ul class="w-full rounded border py-1 shadow-md font-semibold">
+      <div class="w-full md:w-2/12">
+        <ul class="w-full rounded-lg border py-1 shadow-md font-semibold">
           <li class="py-2 border-b border-gray-100 flex">
             <nuxt-link class="flex-1 px-4" to="/personal/messages/received">Reçus</nuxt-link>
             <span class="flex-1 px-4 text-right">
@@ -31,7 +31,7 @@
         </ul>
       </div>
 
-      <div class="w-full md:w-10/12">
+      <div class="w-full md:w-10/12 px-4">
         <nuxt-child></nuxt-child>
       </div>
     </div>
