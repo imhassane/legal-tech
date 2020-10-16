@@ -9,6 +9,10 @@
       <div class="pt-4 text-white" style="height: 100%; background-color: rgba(0, 0, 0, .2);">
         <h2 class="font-bold text-4xl">{{ name }}</h2>
         <p class="font-light text-sm">{{ lawyersCount }} avocats</p>
+
+        <p class="my-4">
+          <nuxt-link to="/declarations/changing-workplace/" class="font-semibold rounded bg-red-700 px-3 py-2">Déclarer un changement de cabinet</nuxt-link>
+        </p>
       </div>
     </div>
 
