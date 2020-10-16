@@ -1,56 +1,74 @@
 <template>
-  <div class="bg-gray-200 md:py-12" style="min-height: 80vh;">
+    <div style="min-height: 80vh;">
 
-    <div class="md:w-2/3 my-auto m-auto border border-gray-400 rounded-lg bg-white shadow-md">
-      <div class="py-4 border-b border-gray-400">
-        <div class="px-3">
-          <p class="font-bold text-lg">Informations personnelles</p>
-          <p class="font-light">Vous pouvez modifier vos informations à tout moment</p>
-        </div>
-      </div>
+      <div class="text-center">
+        <img
+          src="https://images.unsplash.com/photo-1584119164246-461d43e9bab3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+          class="w-32 h-32 object-cover mb-5 mt-5 mx-auto rounded-full" alt=""
+        />
 
-      <div>
-        <div class="flex bg-gray-100 py-4 px-4">
-          <p class="w-1/3 font-semibold text-gray-500">Nom & prénom</p>
-          <p class="w-2/3">SOW Hassane</p>
-        </div>
-        <div class="flex bg-white py-4 px-4">
-          <p class="w-1/3 font-semibold text-gray-500">Adresse email</p>
-          <p class="w-2/3">thsow.pro@gmail.com</p>
-        </div>
-        <div class="flex bg-gray-100 py-4 px-4">
-          <p class="w-1/3 font-semibold text-gray-500">&Agrave; propos de moi</p>
-          <p class="w-2/3">
-            Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat.
-            Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident.
-            Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.
-          </p>
-        </div>
-        <div class="flex bg-white py-4 px-4">
-          <p class="w-1/3 font-semibold text-gray-500">Attestations</p>
-          <div class="w-2/3">
-            <div class="border border-gray-200 rounded">
-              <div class="border-b flex py-1 px-2">
-                <span class="w-1/12"></span>
-                <span class="w-8/12">Carte professionnelle</span>
-                <span class="w-3/12">
-                  <nuxt-link to="/documents/see/" class="text-blue-700 font-semibold">Voir</nuxt-link>
-                  <nuxt-link to="/download/" class="text-blue-700 font-semibold">Télécharger</nuxt-link>
-                </span>
-              </div>
-              <div class="flex py-1 px-2">
-                <span class="w-1/12"></span>
-                <span class="w-8/12">Attestation de côtisation</span>
-                <span class="w-3/12">
-                  <nuxt-link to="/documents/see/" class="text-blue-700 font-semibold">Voir</nuxt-link>
-                  <nuxt-link to="/download/" class="text-blue-700 font-semibold">Télécharger</nuxt-link>
-                </span>
-              </div>
+        <div class="md:w-1/2 m-auto">
+          <div class="font-light flex">
+            <div class="flex">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+              <span>SOW Hassane</span>
+            </div>
+            <div class="flex mx-3">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
+              <span class="ml-1">imthassane@gmail.com</span>
+            </div>
+            <div class="flex">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+              <span class="ml-1">Adeco Justice</span>
             </div>
           </div>
+          <span class="hidden"></span>
+          <span class="text-blue-800 text-sm underline ml-2">Modifier</span>
         </div>
+
+        <div class="md:w-1/2 m-auto">
+          <p class=" py-2 font-light italic">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</p>
+
+          <span class="text-blue-800 text-sm underline ml-2">Modifier</span>
+        </div>
+
+        <div class="my-3 flex-wrap flex">
+
+          <div class="flex border-2 border-gray-300 rounded p-2 w-48">
+            <svg class="w-10 h-10 bg-red-400 rounded-full p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path></svg>
+            <div class="w-2/3">
+              <p class="font-light">Articles écrits</p>
+              <p class="font-semibold">5</p>
+            </div>
+          </div>
+
+          <div class="ml-3 flex border-2 border-gray-300 rounded p-2 w-48">
+            <svg class="w-10 h-10 bg-green-400 rounded-full p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+            <div class="w-2/3">
+              <p class="font-light">Livres ajoutés</p>
+              <p class="font-semibold">0</p>
+            </div>
+          </div>
+
+          <div class="ml-3 flex border-2 border-gray-300 rounded p-2 w-48">
+            <svg class="w-10 h-10 bg-yellow-400 rounded-full p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+            <div class="w-2/3">
+              <p class="font-light">Meetings</p>
+              <p class="font-semibold">12</p>
+            </div>
+          </div>
+
+          <div class="ml-3 flex border-2 border-gray-300 rounded p-2 w-48">
+            <svg class="w-10 h-10 bg-indigo-400 rounded-full p-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div class="w-2/3">
+              <p class="font-light">Connexions</p>
+              <p class="font-semibold">9</p>
+            </div>
+          </div>
+
+        </div>
+
       </div>
-    </div>
 
   </div>
 </template>

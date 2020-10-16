@@ -3,12 +3,12 @@
     <header>
       <main-nav />
     </header>
-    <main>
-      <div class="md:flex">
+    <main style="min-height: 80vh">
+      <div class="md:flex h-full">
         <div class="md:w-2/12">
           <side-nav />
         </div>
-        <div class="md:w-10/12 bg-gray-200">
+        <div class="md:w-10/12">
           <nuxt />
         </div>
       </div>
