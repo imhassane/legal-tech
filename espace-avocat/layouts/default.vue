@@ -2,20 +2,16 @@
   <div>
     <header>
       <main-nav />
-
-      <!-- Affichage du menu sous forme de box -->
-      <div class="flex flex-wrap bg-black text-white font-semibold py-3">
-        <box height="h-12" width="" url="/personal/me/" title="Mes informations" margins="m-1" />
-        <box height="h-12" width="" url="/personal/professional-card/" title="Carte professionnelle" margins="m-1" />
-        <box height="h-12" width="" url="/personal/contributions/" title="Côtisations" margins="m-1" />
-        <box height="h-12" width="" url="/personal/help/" title="Aide juridictionnelle" margins="m-1" />
-        <box height="h-12" width="" url="/personal/certificates/" title="Attestations" margins="m-1" />
-        <box height="h-12" width="" url="/personal/messages/received" title="Messages" margins="m-1" />
-      </div>
-
     </header>
     <main>
-      <nuxt />
+      <div class="md:flex">
+        <div class="md:w-2/12">
+          <side-nav />
+        </div>
+        <div class="md:w-10/12 bg-gray-200">
+          <nuxt />
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -23,7 +19,12 @@
 <script>
   import Box from "~/components/personal/box";
   import MainNav from "../components/nav/main-nav";
+  import SideNav from "../components/nav/side-nav";
   export default {
-    components: {MainNav, Box}
+    components: {SideNav, MainNav, Box}
   }
 </script>
+
+<style>
+
+</style>
