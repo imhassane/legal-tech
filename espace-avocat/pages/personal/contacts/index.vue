@@ -1,9 +1,6 @@
 <template>
   <div>
-    <div class="flex mr-3">
-      <h1 class="font-semibold text-3xl mb-3">Mes contacts</h1>
-    </div>
-    <hr />
+    <page-title title="Contacts" />
 
     <div class="my-4">
       <nuxt-link to="/personal/contacts/add-contact/" class="bg-red-700 text-white font-semibold px-3 py-2 rounded">Ajouter un contact</nuxt-link></li>
@@ -24,7 +21,9 @@
 </template>
 
 <script>
+  import PageTitle from "../../../components/page-title";
   export default {
+    components: {PageTitle},
     head: () => ({
       title: "Mes contacts"
     }),

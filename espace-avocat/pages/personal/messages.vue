@@ -2,6 +2,12 @@
   <div style="min-height: 80vh;">
     <div class="">
 
+      <page-title title="Messagerie" />
+
+      <div class="my-4">
+        <nuxt-link class="py-2 px-3 rounded bg-red-700 text-white font-semibold" to="/personal/messages/new/">Nouveau message</nuxt-link>
+      </div>
+
       <div class="bg-white py-3">
         <ul class="w-full rounded-lg border py-1 font-semibold flex">
           <li class="py-2 border-r border-gray-200 flex">
@@ -42,7 +48,9 @@
 </template>
 
 <script>
+  import PageTitle from "../../components/page-title";
   export default {
+    components: {PageTitle},
     head: () => ({
       title: "Messages"
     })
