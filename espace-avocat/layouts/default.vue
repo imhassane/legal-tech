@@ -6,9 +6,10 @@
     <main style="min-height: 80vh">
       <div class="md:flex h-full">
         <div class="md:w-2/12">
-          <side-nav />
+          <div class="hidden md:block"><side-nav /></div>
+          <div class="md:hidden"><side-nav-mobile /></div>
         </div>
-        <div class="md:w-10/12">
+        <div class="md:w-10/12 px-1">
           <nuxt />
         </div>
       </div>
@@ -20,8 +21,9 @@
   import Box from "~/components/personal/box";
   import MainNav from "../components/nav/main-nav";
   import SideNav from "../components/nav/side-nav";
+  import SideNavMobile from "../components/nav/side-nav-mobile";
   export default {
-    components: {SideNav, MainNav, Box}
+    components: {SideNavMobile, SideNav, MainNav, Box}
   }
 </script>
 

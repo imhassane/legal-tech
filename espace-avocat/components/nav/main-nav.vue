@@ -3,7 +3,7 @@
 
     <div class="align-bottom">
       <span class="mx-2">
-        <nuxt-link to="/personal">Espace avocat</nuxt-link>
+        <nuxt-link to="/personal/me/">Espace avocat</nuxt-link>
       </span>
     </div>
 
@@ -23,6 +23,7 @@
     <div class="flex-1">
       <img
         class="w-10 h-10 rounded-full object-cover float-right"
+        v-bind:class="[$route.path === '/personal/me/' ? 'hidden': '']"
         src="https://images.unsplash.com/photo-1584119164246-461d43e9bab3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80" alt="">
     </div>
   </nav>
