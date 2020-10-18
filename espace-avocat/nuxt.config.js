@@ -45,6 +45,7 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    '@nuxtjs/apollo'
   ],
   /*
   ** Axios module configuration
@@ -52,6 +53,15 @@ export default {
   */
   axios: {
   },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:5000',
+      }
+    }
+  },
+
   /*
   ** Build configuration
   */

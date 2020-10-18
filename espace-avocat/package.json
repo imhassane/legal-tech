@@ -12,9 +12,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.3",
     "@nuxtjs/axios": "^5.3.6",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
+    "graphql-tag": "^2.11.0",
     "nuxt": "^2.0.0",
     "tiptap": "^1.30.0",
     "tiptap-extensions": "^1.33.1"
