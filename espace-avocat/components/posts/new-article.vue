@@ -2,7 +2,7 @@
   <div class="flex flex-wrap py-4 px-3">
     <div class="w-full md:w-2/3">
       <div class="mb-8">
-        <input type="text" class="w-full bg-gray-100 px-4 py-3 font-bold text-3xl" placeholder="Titre de l'article" />
+        <input type="text" class="w-full bg-gray-100 px-4 py-3 font-bold text-3xl" placeholder="Titre de l'article" @input="handleTitleChange" />
       </div>
         <div class="editor">
           <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
@@ -145,7 +145,9 @@
       <div class="mb-5">
         <p class="font-bold mb-3">Type</p>
         <div>
-          <select id="type" class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
+          <select
+            v-model="data.type" id="type"
+            class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500">
             <option v-for="type in articleTypes" :key="type.id" :value="type.name">{{ type.name }}</option>
           </select>
         </div>
@@ -154,7 +156,7 @@
       <!-- Extract -->
       <div class="mb-5">
         <p class="font-bold mb-3">Extrait</p>
-        <textarea rows="6" class="bg-gray-200 border border-gray-200 p-2 border-2 rounded w-full"></textarea>
+        <textarea rows="6" class="bg-gray-200 border border-gray-200 p-2 border-2 rounded w-full" @input="handleExtractChange"></textarea>
       </div>
 
       <!-- Cover -->
@@ -170,8 +172,17 @@
 
       <!-- Managment -->
       <div>
-        <button class="py-2 w-full block rounded border-black border-2 my-2 font-semibold">Enregistrer comme brouillon</button>
-        <button class="py-2 w-full block rounded border-red-700 border-2 my-2 bg-red-700 text-white font-semibold">Publier</button>
+        <button
+          class="py-2 w-full block rounded border-black border-2 my-2 font-semibold"
+        >
+          Enregistrer comme brouillon
+        </button>
+        <button
+          class="py-2 w-full block rounded border-red-700 border-2 my-2 bg-red-700 text-white font-semibold"
+          @click.prevent="handleSubmit"
+        >
+          Publier
+        </button>
       </div>
     </div>
   </div>
@@ -196,6 +207,7 @@
     Strike,
     Underline,
     History } from "tiptap-extensions";
+
   export default {
     name: "new-article-form",
     components: {EditorContent, EditorMenuBar},
@@ -240,8 +252,11 @@
           new Underline(),
           new History()
         ]
-      })
+      }),
+      data: { title: null, content: null, cover: null, extract: null, type: "BLOG" },
+      errors: { title: null, cover: null, extract: null, messages: null }
     }),
+    props: ["onSubmit", "onDraft"],
     beforeDestroy: function() {
       this.editor.destroy();
     },
@@ -255,6 +270,34 @@
         {id: 6, name: "PRESS"},
         {id: 7, name: "FOREIGN"}
       ]
+    },
+    methods: {
+      handleTitleChange: function({target: {value}}) {
+        if(value && value.trim().length > 0) {
+          this.data.title = value.trim();
+          this.errors.title = false;
+        } else {
+          this.data.title = null;
+          this.errors.title = true;
+        }
+      },
+      handleExtractChange: function({target:{value}}) {
+        if(value && value.trim().length >= 30) {
+          this.data.extract = value.trim();
+          this.errors.extract = false;
+        } else {
+          this.data.extract = null;
+          this.errors.extract = true;
+        }
+      },
+      handleSubmit: async function() {
+        this.data.content = this.editor.getHTML();
+        this.data.cover = "https://images.unsplash.com/photo-1602526214127-3479ced5fd74?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60";
+        this.onSubmit(this.data);
+      },
+      handleDraft: function() {
+
+      }
     }
   }
 </script>

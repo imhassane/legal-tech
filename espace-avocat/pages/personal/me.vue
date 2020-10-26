@@ -1,9 +1,11 @@
 <template>
-    <div style="min-height: 80vh;">
+    <div v-if="$apollo.loading">Chargement en cours...</div>
+    <div style="min-height: 80vh;" v-else>
 
       <div class="text-center">
         <img
-          src="https://images.unsplash.com/photo-1584119164246-461d43e9bab3?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80"
+          v-if="me.avatar"
+          :src="me.avatar"
           class="w-32 h-32 object-cover mb-5 mt-5 mx-auto rounded-full" alt=""
         />
 
@@ -11,23 +13,23 @@
           <div class="text-center font-hairline md:font-light md:flex">
             <div class="flex">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
-              <span>SOW Hassane</span>
+              <span v-if="me.firstName && me.lastName">{{ me.lastName.toUpperCase() }} {{ me.firstName }}</span>
             </div>
             <div class="flex md:mx-3">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12a4 4 0 10-8 0 4 4 0 008 0zm0 0v1.5a2.5 2.5 0 005 0V12a9 9 0 10-9 9m4.5-1.206a8.959 8.959 0 01-4.5 1.207"></path></svg>
-              <span class="ml-1">imthassane@gmail.com</span>
+              <span class="ml-1" v-if="me.credentials.email">{{ me.credentials.email }}</span>
             </div>
             <div class="flex">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              <span class="ml-1">Adeco Justice</span>
+              <span class="ml-1" v-if="me.companies.current.company.name">{{ me.companies.current.company.name }}</span>
             </div>
           </div>
           <span class="hidden"></span>
           <span class="text-blue-800 text-sm underline ml-2">Modifier</span>
         </div>
 
-        <div class="md:w-1/2 m-auto">
-          <p class=" py-2 font-hairline md:font-light italic">Fugiat ipsum ipsum deserunt culpa aute sint do nostrud anim incididunt cillum culpa consequat. Excepteur qui ipsum aliquip consequat sint. Sit id mollit nulla mollit nostrud in ea officia proident. Irure nostrud pariatur mollit ad adipisicing reprehenderit deserunt qui eu.</p>
+        <div class="md:w-1/2 m-auto" v-if="me.description">
+          <p class=" py-2 font-hairline md:font-light italic">{{ me.description }}</p>
 
           <span class="text-blue-800 text-sm underline ml-2">Modifier</span>
         </div>
@@ -74,9 +76,37 @@
 </template>
 
 <script>
+  import gql from "graphql-tag";
+
+  const PROFILE = gql`
+    {
+        me {
+          id, firstName, lastName, avatar, description,
+          credentials { email, status }
+          contact {
+            email, telephone
+          }
+          companies {
+            current {
+              company { id, name }
+            }
+          }
+        }
+    }
+  `;
+
   export default {
     head: () => ({
       title: "Mes informations personnelles"
-    })
+    }),
+    apollo: {
+      me: {
+        query: PROFILE,
+        update: data => data.me,
+        error: (err) => {
+          console.log(err);
+        }
+      }
+    }
   }
 </script>

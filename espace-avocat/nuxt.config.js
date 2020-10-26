@@ -56,9 +56,7 @@ export default {
 
   apollo: {
     clientConfigs: {
-      default: {
-        httpEndpoint: 'http://localhost:5000',
-      }
+      default: "~/apollo/client-configs/default.js"
     }
   },
 
