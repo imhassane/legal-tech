@@ -245,3 +245,9 @@ create table t_prefecture_pre
 	pre_name varchar(50) not null,
 	pre_region_admin int not null
 );
+
+alter table tj_member_company drop constraint tj_member_company_pk;
+
+alter table tj_member_company
+	add constraint tj_member_company_pk
+		primary key (com_id, cre_id, entry_date);

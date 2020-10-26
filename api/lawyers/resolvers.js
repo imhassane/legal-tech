@@ -21,9 +21,26 @@ const VERIFY_LAWYER_EXISTS = `
     WHERE cre_id = $1
 `;
 
+const VERIFY_COMPANY_EXISTS = `
+    SELECT COUNT(com_id) as exists
+    FROM t_company_com
+    WHERE com_id = $1
+`;
+
+const VERIFY_LAWYER_COMPANY_NOT_ASSOCIATED = `
+    SELECT COUNT(*) as exists
+    FROM tj_member_company
+    WHERE com_id = $1 AND cre_id = $2 AND end_date IS NULL
+`;
+
 const ADD_LAWYER_INFORMATIONS = `
     INSERT INTO t_lawyer_info_lin
     VALUES ($1, $2, $3);
+`;
+
+const ADD_LAWYER_COMPANY = `
+    INSERT INTO tj_member_company(com_id, cre_id, entry_date, status)
+    VALUES ($1, $2, $3, (SELECT mem_type FROM t_member_mem WHERE cre_id = $2))
 `;
 
 const UPDATE_PREFECTURE = `
@@ -44,6 +61,41 @@ const UPDATE_LAWYER = `
             lin_sermon_date = $3
     WHERE cre_id = $1
 `;
+
+const addLawyerCompany = async (_parent, data, context) => {
+    try {
+        // We check if the lawyer exists.
+        let exists = await pool.query(VERIFY_LAWYER_EXISTS, [data.lawyerID]);
+        if(!parseInt(exists.rows[0].exists)){
+            if(data.lawyerID !== context.user)
+                throw new Error("Ce membre n'est pas considéré comme un avocat");
+            else
+                throw new Error("Vous n'êtes pas encore considéré comme un avocat");
+        }
+
+        // We verify that the company exists.
+        exists = await pool.query(VERIFY_COMPANY_EXISTS, [data.companyID]);
+        if(!parseInt(exists.rows[0].exists))
+            throw new Error("Ce cabinet n'existe pas");
+
+        // Checking if the lawyer hasn't already declared this job.
+        exists = await pool.query(VERIFY_LAWYER_COMPANY_NOT_ASSOCIATED, [data.companyID, data.lawyerID]);
+
+        if(parseInt(exists.rows[0].exists)){
+            if(context.user === data.lawyerID)
+                throw new Error("Vous avez déjà déclaré être employé par ce cabinet");
+            else
+                throw new Error("Cet employé est déjà employé par ce cabinet");
+        }
+
+        await pool.query(ADD_LAWYER_COMPANY, [data.companyID, data.lawyerID, data.entryDate]);
+
+        return "Les informations ont bien été mises à jour";
+    } catch(ex) {
+        throw ex;
+        // TODO: Logging
+    }
+};
 
 module.exports = {
     Member: {
@@ -135,6 +187,10 @@ module.exports = {
             }
 
             return {};
+        },
+        addLawyerCompany,
+        addMyCompany: async (_parent, data, context) => {
+            return addLawyerCompany(_parent, {...data, lawyerID: context.user}, context);
         }
     }
 }
