@@ -22,6 +22,7 @@ input UpdateMemberInput {
 extend type Query {
     members(type: MemberType!, start: Int!, limit: Int!): [Member!]!
     member(id: ID!): Member!
+    me: Member!
 }
 
 extend type Mutation {

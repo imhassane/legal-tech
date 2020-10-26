@@ -30,7 +30,7 @@ const MEMBER_EXISTS = `
 
 const GET_MEMBER = `
     SELECT
-        cre_id, cre_email,
+        cre_id, cre_email, cre_status,
         mem_first_name, mem_last_name, mem_avatar,
         mem_type, mem_description
     FROM t_member_mem

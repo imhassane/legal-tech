@@ -40,6 +40,10 @@ const member = async (_p, {id}, {pool, user, permissions}) => {
     }
 };
 
+const me = async (parent, {data}, context) => {
+    return member(parent, {id: context.user}, context);
+};
+
 const newMember = async (_p, {data}, {pool}) => {
     try {
         let {email, password} = data;
@@ -154,6 +158,7 @@ module.exports = {
     Query: {
         members,
         member,
+        me
     },
     Mutation: {
         newMember,

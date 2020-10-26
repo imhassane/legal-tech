@@ -49,6 +49,10 @@ const makeSchemaOfCredentials = (data) => {
         data.credentials.updatedAt = data.cre_updated_at;
         delete data.cre_updated_at;
     }
+    if(data.cre_status) {
+        data.credentials.status = data.cre_status;
+        delete data.cre_status;
+    }
     return data;
 };
 
