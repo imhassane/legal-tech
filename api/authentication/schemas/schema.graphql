@@ -1,6 +1,7 @@
 type AuthToken {
     token: String!
     permissions: [String!]
+    expiresIn: Int!
 }
 
 extend type Mutation {

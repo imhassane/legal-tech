@@ -29,7 +29,7 @@ const authenticate = async (_parent, data, {pool}) => {
     const permissions = result.rows.map(r => r.permission);
 
     const token = jwt.sign({ id: cre_id }, process.env.JWT_SECRET, { expiresIn: '2h' });
-    return { token, permissions };
+    return { token, permissions, expiresIn: 2 };
 };
 
 module.exports = {
