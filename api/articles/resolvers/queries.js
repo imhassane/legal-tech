@@ -8,6 +8,16 @@ const GET_ARTICLES = `
     OFFSET $3 LIMIT $4
 `;
 
+const GET_ALL_ARTICLES = `
+    SELECT
+        art_id, art_title, art_extract, art_content, art_reading_time,
+        art_slug, art_views, art_type, art_state, art_cover, art_likes
+    FROM t_article_art
+    WHERE art_state = $1
+    ORDER BY art_id DESC
+    OFFSET $2 LIMIT $3
+`;
+
 const GET_MEMBER_ARTICLES = `
     SELECT
         art_id, art_title, art_extract, art_content, art_reading_time,
@@ -76,7 +86,7 @@ const VERIFY_ARTICLE_EXISTS = `
 `;
 
 module.exports = {
-    GET_ARTICLES, GET_ARTICLE, GET_ARTICLE_BY_SLUG,
+    GET_ARTICLES, GET_ALL_ARTICLES, GET_ARTICLE, GET_ARTICLE_BY_SLUG,
     GET_ARTICLES_LIKES, GET_APPROVED_ARTICLES_FOR_MEMBER, GET_MEMBER_ARTICLES,
     INSERT_ARTICLE, UPDATE_ARTICLE_STATE, VERIFY_ARTICLE_EXISTS
 };

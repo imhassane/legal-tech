@@ -3,7 +3,8 @@
 enum ArticleType {
     BLOG, REVUE, PAGE,
     DOMAIN, ACTU,
-    PRESS, FOREIGN
+    PRESS, FOREIGN,
+    ALL
 }
 
 enum ArticleState {

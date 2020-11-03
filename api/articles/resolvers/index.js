@@ -53,7 +53,10 @@ const verifyArticle = article => {
 };
 
 const articles = async (_p, data) => {
-    const { rows } = await pool.query(sql.GET_ARTICLES, [data.state, data.type, data.start, data.limit]);
+    let params = data.type === "ALL" ? [data.state, data.start, data.limit] : [data.state, data.type, data.start, data.limit];
+    const query = data.type === "ALL" ? sql.GET_ALL_ARTICLES : sql.GET_ARTICLES;
+
+    const { rows } = await pool.query(query, params);
     return rows.map(r => convertToArticle(r));
 };
 
