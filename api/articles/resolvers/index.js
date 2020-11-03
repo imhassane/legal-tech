@@ -169,6 +169,7 @@ const updateArticleCover = async (_p, {id, cover}, {user}) => {
 const updateArticleState = async (_p, {id, state}, {user, permissions}) => {
     if(!user)
         throw new Error("Vous devez vous connecter pour modifier l'état de l'article");
+
     if(!(permissions.includes("SUPREME")))
         throw new Error("Vous n'avez pas les permissions pour modifier l'état de l'article");
 
@@ -210,6 +211,14 @@ const updateCommentState = () => {};
 
 const deleteComment = () => {};
 
+const approveArticle = async (parent, data, context) => {
+    return updateArticleState(parent, {...data, state: "APPROVED"}, context);
+};
+
+const rejectArticle = async (parent, data, context) => {
+    return updateArticleState(parent, {...data, state: "REJECTED"}, context);
+};
+
 module.exports = {
     Member: {
       articles: async (member) => await getMemberArticles(member.id),
@@ -229,14 +238,9 @@ module.exports = {
         newArticleComment,
         newCommentReply,
         updateCommentState,
-        deleteComment
-    },
-    Article: {
-        author: async () => {
+        deleteComment,
 
-        },
-        approvedBy: async () => {
-
-        }
+        approveArticle,
+        rejectArticle
     }
 };

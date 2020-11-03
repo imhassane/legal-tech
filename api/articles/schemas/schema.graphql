@@ -21,6 +21,7 @@ extend type Mutation {
     updateArticleState(id: ID!, state: ArticleState): Article!
     deleteArticle(id: ID!): Article!
     approveArticle(id: ID!): Article!
+    rejectArticle(id: ID!): Article!
 
     newArticleComment(articleId: Int!, authorId: ID, fullName: String, email: String, content: String): Comment!
     newCommentReply(articleId: Int!, commentId: Int!, authorId: ID, fullName: String, email: String, content: String): Comment!
