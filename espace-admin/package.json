@@ -11,9 +11,11 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/apollo": "^4.0.1-rc.4",
     "@nuxtjs/dotenv": "^1.4.0",
     "@nuxtjs/pwa": "^3.0.0-0",
     "create-nuxt-app": "^3.3.0",
+    "graphql-tag": "^2.11.0",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {

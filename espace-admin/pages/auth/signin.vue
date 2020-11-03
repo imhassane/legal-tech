@@ -43,6 +43,16 @@
 </template>
 
 <script>
+  import gql from "graphql-tag";
+
+  const AUTH_QUERY = gql`
+    mutation ($email: String!, $password: String!) {
+          authenticate(email: $email, password: $password) {
+              token, permissions, expiresIn
+          }
+      }
+`;
+
   export default {
     name: 'signin',
     layout: 'Auth',
@@ -52,16 +62,28 @@
       validations: { email: false, password: false }
     }),
     methods: {
-      onSignIn: async () => {
+      onSignIn: async function() {
         try {
           const valid = this.validations.email && this.validations.password;
           if(valid) {
+            const {data: {authenticate}} = await this.$apollo.mutate({
+              mutation: AUTH_QUERY,
+              variables: this.values
+            });
 
+            localStorage.setItem(process.env.LOCALSTORAGE_AUTH_TOKEN, authenticate.token);
+            localStorage.setItem(process.env.LOCALSTORAGE_AUTH_PERMISSIONS, JSON.stringify(authenticate.permissions));
+            localStorage.setItem(process.env.LOCALSTORAGE_AUTH_EXPIRESIN, authenticate.expiresIn);
+            localStorage.setItem(process.env.LOCALSTORAGE_AUTH_LOGIN_DATE, new Date().toString());
+
+            setTimeout(() => this.$router.push("/dashboard"), 1000);
           } else {
             this.errors.message = "Les informations ne sont pas correctement entrées"
           }
         } catch(ex) {
-
+          if(ex.graphQLErrors) {
+            this.errors.message = ex.graphQLErrors[0].message;
+          }
         }
       },
       onEmailChange: function({target:{value}}){

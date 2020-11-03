@@ -11,6 +11,11 @@ input NewContactInput {
     website: String
 }
 
+input SearchFieldsInput {
+    telephone: String
+    email: String
+}
+
 extend type Member @key(fields: "id") {
     id: ID! @external
     contact: Contact
@@ -23,6 +28,7 @@ extend type Company @key(fields: "id") {
 
 extend type Query {
     contact(id: ID): Contact
+    searchContacts(fields: SearchFieldsInput!): [Contact!]
 }
 
 extend type Mutation {

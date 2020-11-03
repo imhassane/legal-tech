@@ -43,7 +43,13 @@ export default {
     '@nuxtjs/pwa',
     // Doc: https://github.com/nuxt-community/dotenv-module
     '@nuxtjs/dotenv',
+    '@nuxtjs/apollo'
   ],
+  apollo: {
+    clientConfigs: {
+      default: "~/apollo/client-configs/default.js"
+    }
+  },
   /*
   ** Build configuration
   */

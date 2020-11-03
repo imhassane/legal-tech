@@ -251,3 +251,5 @@ alter table tj_member_company drop constraint tj_member_company_pk;
 alter table tj_member_company
 	add constraint tj_member_company_pk
 		primary key (com_id, cre_id, entry_date);
+
+alter type article_state add value 'REJECTED';

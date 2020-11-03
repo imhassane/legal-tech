@@ -52,6 +52,12 @@ const ADD_COMPANY_CONTACT = `
     RETURNING *
 `;
 
+const SEARCH_CONTACT = `
+    SELECT con_id, con_email, con_website,
+            con_twitter, con_instagram, con_facebook,
+            con_address,  
+`;
+
 const convertToContact = (contact) => {
     if(contact.con_id) {
         contact.id = contact.con_id;
@@ -95,6 +101,14 @@ module.exports = {
             if(!rows.length)
                 return null;
             return convertToContact(rows[0]);
+        },
+        searchContacts: async (_parent, data, context) => {
+            try {
+                const {email, telephone} = data;
+            } catch(ex) {
+                throw ex;
+                // TODO: Logging.
+            }
         }
     },
     Company: {
