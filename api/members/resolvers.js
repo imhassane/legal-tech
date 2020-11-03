@@ -152,7 +152,25 @@ const removeMemberPermission = async (_p, {userId, permission}, {pool, user, per
         // TODO: logging.
         throw ex;
     }
-}
+};
+
+const author = async (parent, _, context) => {
+    let data = await context.pool.query(sql.GET_MEMBER_FROM_ARTICLES, [parent.id]);
+    if(!data.rows.length)
+        throw new Error("L'auteur de cet article n'existe pas");
+    const {cre_id} = data.rows[0];
+    return member(parent, {id: cre_id}, context);
+};
+
+const approvedBy = async (parent, _, context) => {
+    let data = await context.pool.query(sql.GET_MEMBER_FROM_ARTICLES, [parent.id]);
+    if(!data.rows.length)
+        throw new Error("L'auteur de cet article n'existe pas");
+    const {art_approved_by} = data.rows[0];
+    if(!art_approved_by)
+        return null;
+    return member(parent, {id: art_approved_by}, context);
+};
 
 module.exports = {
     Query: {
@@ -166,5 +184,9 @@ module.exports = {
         updateMemberType,
         addMemberPermission,
         removeMemberPermission
+    },
+    Article: {
+        author,
+        approvedBy
     }
 }

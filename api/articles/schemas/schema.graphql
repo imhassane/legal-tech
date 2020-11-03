@@ -27,8 +27,3 @@ extend type Mutation {
     updateCommentState(id: ID!, state: CommentState!): Comment!
     deleteComment(id: ID!): Comment!
 }
-
-type Article {
-    author: Member
-    approvedBy: Member
-}

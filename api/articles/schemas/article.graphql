@@ -24,6 +24,4 @@ type Article @key(fields: "id") {
     type: ArticleType!
     state: ArticleState!
     comments: [Comment!]!
-    author: Member! @provides(fields: "id firstName lastName avatar")
-    approvedBy: Member! @provides(fields: "id firstName lastName avatar")
 }

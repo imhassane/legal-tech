@@ -32,3 +32,9 @@ extend type Mutation {
     updatePersonnalInformations(data: UpdateMemberInput): Member!
     updateMemberType(id: ID!, status: MemberType!): Member!
 }
+
+extend type Article @key(fields: "id"){
+    id: ID! @external
+    author: Member!
+    approvedBy: Member
+}

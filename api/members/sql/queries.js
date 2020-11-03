@@ -62,11 +62,18 @@ const REMOVE_PERMISSION = `
     WHERE cre_id = $1 AND permission = $2
 `;
 
+const GET_MEMBER_FROM_ARTICLES = `
+    SELECT cre_id, art_approved_by
+    FROM t_article_art
+    WHERE art_id = $1
+`;
+
 module.exports = {
     INSERT_CREDENTIALS,
     INSERT_MEMBER,
 
     MEMBER_EXISTS, GET_MEMBER, GET_MEMBERS,
+    GET_MEMBER_FROM_ARTICLES,
 
     ADD_PERMISSION, GET_MEMBER_PERMISSION,
     VERIFY_MEMBER_PERMISSION,
