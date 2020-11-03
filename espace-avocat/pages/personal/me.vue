@@ -1,8 +1,11 @@
 <template>
     <div v-if="$apollo.loading">Chargement en cours...</div>
+    <div v-else-if="messages.error">
+      <errors-box type="danger" :message="messages.error" />
+    </div>
     <div style="min-height: 80vh;" v-else>
 
-      <div class="text-center">
+      <div class="text-center" v-if="me">
         <img
           v-if="me.avatar"
           :src="me.avatar"
@@ -77,6 +80,7 @@
 
 <script>
   import gql from "graphql-tag";
+  import ErrorsBox from "../../components/errors";
 
   const PROFILE = gql`
     {
@@ -96,15 +100,19 @@
   `;
 
   export default {
+    components: {ErrorsBox},
     head: () => ({
-      title: "Mes informations personnelles"
+      title: "Mes informations personnelles",
+    }),
+    data: () => ({
+      messages: { error: null }
     }),
     apollo: {
       me: {
         query: PROFILE,
         update: data => data.me,
-        error: (err) => {
-          console.log(err);
+        error: function(err){
+          this.messages.error = err.graphQLErrors[0].message;
         }
       }
     }

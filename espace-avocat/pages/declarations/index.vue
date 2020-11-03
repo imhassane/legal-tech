@@ -14,6 +14,13 @@
         <div class="px-4 mb-5 border-l-4 border-red-700">
           <div class="">
             <span class="flex-auto"></span>
+            <nuxt-link class="flex-auto" to="/declarations/work-experience/">Une expérience professionnelle passée</nuxt-link>
+          </div>
+        </div>
+
+        <div class="px-4 mb-5 border-l-4 border-red-700">
+          <div class="">
+            <span class="flex-auto"></span>
             <nuxt-link class="flex-auto" to="/declarations/changing-address/">Je démenage</nuxt-link>
           </div>
         </div>

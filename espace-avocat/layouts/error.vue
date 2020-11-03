@@ -7,7 +7,7 @@
     </div>
 
     <div v-else>
-      <h1>Oups!</h1>
+      <h1>{{ error }}</h1>
     </div>
   </div>
 </template>

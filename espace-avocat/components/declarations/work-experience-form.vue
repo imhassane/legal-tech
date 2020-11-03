@@ -9,6 +9,12 @@
         <p class="font-light text-sm">Date actuelle: {{ entryDate }}</p>
       </div>
 
+      <div class="md:flex-1 md:pr-2">
+        <p class="font-bold text-xl mb-3 pb-3 border-gray-300 border-b-4"><label for="endDate">Date de fin</label></p>
+        <input type="date" id="endDate" @input="handleEndDateChoice" class="w-full border rounded p-2" />
+        <p class="font-light text-sm">Date actuelle: {{ endDate }}</p>
+      </div>
+
       <div class="md:flex-1">
         <p class="font-bold text-xl mb-3 pb-3 border-gray-300 border-b-4"><label for="company">Cabinet</label></p>
         <select id="company" v-model="company" class="w-full border rounded p-2">
@@ -35,11 +41,12 @@
 
 <script>
   export default {
-    name: "starting-work-form",
+    name: "work-experience-form",
     data: () => ({
       confirmed: false,
       company: 0,
-      entryDate: new Date().toUTCString()
+      entryDate: new Date().toUTCString(),
+      endDate: new Date().toUTCString()
     }),
     props: ["onSubmit", "companies"],
     methods: {
@@ -48,6 +55,9 @@
       },
       handleDateChoice: function(e) {
         this.entryDate = e.target.value;
+      },
+      handleEndDateChoice: function(e) {
+        this.endDate = e.target.value;
       }
     }
   }

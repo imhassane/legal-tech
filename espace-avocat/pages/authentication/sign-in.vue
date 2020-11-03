@@ -44,7 +44,7 @@
   const AUTH_QUERY = gql`
       mutation ($email: String!, $password: String!) {
           authenticate(email: $email, password: $password) {
-              token, permissions
+              token, permissions, expiresIn
           }
       }
   `;
@@ -67,6 +67,8 @@
           });
           localStorage.setItem(process.env.LOCALSTORAGE_AUTH_TOKEN, authenticate.token);
           localStorage.setItem(process.env.LOCALSTORAGE_AUTH_PERMISSIONS, JSON.stringify(authenticate.permissions));
+          localStorage.setItem(process.env.LOCALSTORAGE_AUTH_EXPIRESIN, authenticate.expiresIn);
+          localStorage.setItem(process.env.LOCALSTORAGE_AUTH_LOGIN_DATE, new Date().toString());
 
           setTimeout(() => this.$router.push("/personal"), 1000);
         } catch(ex) {
