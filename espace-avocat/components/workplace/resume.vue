@@ -19,7 +19,7 @@
     <div class="my-5">
       <h2 class="font-bold text-2xl mb-3">Contact</h2>
 
-      <div class="flex flex-wrap">
+      <div class="flex flex-wrap" v-if="contact">
 
         <div class="flex-auto">
           <svg class="inline w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
@@ -37,6 +37,11 @@
         </div>
 
       </div>
+
+      <div v-else>
+        <p class="py-2 px-3 text-center font-semibold text-blue-800 bg-blue-200">Ce cabinet n'a défini aucun contact pour le moment</p>
+      </div>
+
     </div>
 
   </div>

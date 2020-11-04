@@ -8,7 +8,7 @@ enum ArticleType {
 }
 
 enum ArticleState {
-    DRAFT, PENDING, DELETED, APPROVED
+    DRAFT, PENDING, DELETED, APPROVED, REJECTED
 }
 
 type Article @key(fields: "id") {

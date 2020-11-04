@@ -24,6 +24,7 @@ const COMPANIES = `
         com_name as name,
         com_description as description,
         com_prefecture as prefecture,
+        com_cover as cover,
         com_created_at as createdAt,
         com_inserted_at as insertedAt,
         com_updated_at as updatedAt
@@ -54,6 +55,7 @@ const MEMBER_COMPANY = `
         com_name as name,
         com_description as description,
         com_prefecture as prefecture,
+        com_cover as cover,
         com_created_at as createdAt,
         com_inserted_at as insertedAt,
         com_updated_at as updatedAt,

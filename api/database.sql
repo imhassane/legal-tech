@@ -253,3 +253,7 @@ alter table tj_member_company
 		primary key (com_id, cre_id, entry_date);
 
 alter type article_state add value 'REJECTED';
+
+alter table t_company_com
+	add com_cover text;
+

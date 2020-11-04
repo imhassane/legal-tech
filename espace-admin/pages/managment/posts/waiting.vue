@@ -4,6 +4,7 @@
     <page-title title="En attente" />
 
     <div v-if="articles">
+      <errors-box v-if="articles.length === 0" message="Aucun article en attente pour le moment" type="info" />
       <waiting-article v-for="a in articles" :key="a.id" :article="a" />
     </div>
   </div>
@@ -14,6 +15,7 @@
   import Loading from "../../../components/loading";
   import WaitingArticle from "../../../components/articles/waiting-article";
   import PageTitle from "../../../components/page-title";
+  import ErrorsBox from "../../../components/errors";
 
   const QUERY = gql`
     query ($start: Int!, $limit: Int!) {
@@ -25,7 +27,7 @@
    `;
 
   export default {
-    components: {PageTitle, WaitingArticle, Loading},
+    components: {ErrorsBox, PageTitle, WaitingArticle, Loading},
     head: () => ({
       title: "Articles en attente"
     }),
