@@ -4,6 +4,7 @@ scalar DateTime
 extend type Member @key(fields: "id") {
     id: ID! @external
     formations: [Education!]
+    hasEducation: Boolean!
 }
 
 extend type Mutation {

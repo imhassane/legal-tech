@@ -12,9 +12,11 @@ type Contact @key(fields: "id") {
 extend type Member @key(fields: "id") {
     id: ID! @external
     contact: Contact
+    hasContact: Boolean!
 }
 
 extend type Company @key(fields: "id") {
     id: ID! @external
     contact: Contact
+    hasContact: Boolean!
 }

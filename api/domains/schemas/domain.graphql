@@ -25,4 +25,5 @@ extend type Member @key(fields: "id") {
     lastName: String! @external
     avatar: String! @external
     domains: [Domain!]
+    hasDomains: Boolean!
 }

@@ -6,9 +6,14 @@ const {
     makeSchemaOfMember
 } = require('./helpers/convert');
 
-const members = async (_, {type, start, limit}, {pool}) => {
+const members = async (_, {type, status, start, limit}, {pool}) => {
     try {
-        let { rows } = await pool.query(sql.GET_MEMBERS, [type, start, limit]);
+        let rows = [];
+        if(type === "ALL")
+            rows = (await pool.query(sql.GET_ALL_MEMBERS, [status, start, limit])).rows;
+        else
+            rows = (await pool.query(sql.GET_MEMBERS, [type, status, start, limit])).rows;
+
         return rows.map(r => makeSchemaOfMember(r));
     } catch(ex) {
         // TODO: logging.

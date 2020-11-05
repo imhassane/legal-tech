@@ -32,6 +32,7 @@ extend type Member @key(fields: "id") {
     lastName: String! @external
     avatar: String! @external
     companies: MemberCompany
+    hasCompany: Boolean!
 }
 
 input NewCompanyInput {

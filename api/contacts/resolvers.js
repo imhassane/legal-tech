@@ -58,6 +58,18 @@ const SEARCH_CONTACT = `
             con_address,  
 `;
 
+const MEMBER_HAS_CONTACT = `
+    SELECT COUNT(*) AS exists
+    FROM t_contact_con
+    WHERE cre_id = $1
+`;
+
+const COMPANY_HAS_CONTACT = `
+    SELECT COUNT(*) AS exists
+    FROM t_contact_con
+    WHERE com_id = $1
+`;
+
 const convertToContact = (contact) => {
     if(contact.con_id) {
         contact.id = contact.con_id;
@@ -109,6 +121,14 @@ module.exports = {
                 throw ex;
                 // TODO: Logging.
             }
+        },
+        hasContact: async (member) => {
+            let hasContact = false;
+            const { rows } = await pool.query(MEMBER_HAS_CONTACT, [member.id]);
+            if(rows.length)
+                if(parseInt(rows[0].exists) > 0)
+                    hasContact = true;
+            return hasContact;
         }
     },
     Company: {
@@ -117,7 +137,15 @@ module.exports = {
           if(!rows.length)
               return null;
           return convertToContact(rows[0]);
-      }
+      },
+        hasContact: async (company) => {
+            let hasContact = false;
+            const { rows } = await pool.query(COMPANY_HAS_CONTACT, [company.id]);
+            if(rows.length)
+                if(parseInt(rows[0].exists) > 0)
+                    hasContact = true;
+            return hasContact;
+        }
     },
     Mutation: {
         newUserContact: async (_parent, {id, data}, {user, permissions}) => {

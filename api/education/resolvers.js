@@ -17,11 +17,24 @@ const GET_EDUCATION = `
     ORDER BY edu_year DESC
 `;
 
+const MEMBER_HAS_FORMATIONS = `
+    SELECT COUNT(*) AS exists
+    FROM t_education_edu
+    WHERE cre_id = $1
+`;
+
 module.exports = {
     Member: {
         formations: async (member) => {
             const { rows } = await pool.query(GET_EDUCATION, [member.id]);
             return rows;
+        },
+        hasEducation: async (member) => {
+            let hasEducation = false;
+            const { rows } = await pool.query(MEMBER_HAS_FORMATIONS, [member.id]);
+            if(rows.length && parseInt(rows[0].exists) > 0)
+                hasEducation = true;
+            return hasEducation;
         }
     },
     Mutation: {

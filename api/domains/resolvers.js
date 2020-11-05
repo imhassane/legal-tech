@@ -69,6 +69,11 @@ const DOMAIN_LAWYERS = `
     WHERE dom_id = $1
 `;
 
+const HAS_DOMAIN = `
+    SELECT COUNT(*) as exists
+    FROM tj_domain_lawyer
+    WHERE cre_id = $1
+`;
 
 module.exports = {
     
@@ -100,6 +105,14 @@ module.exports = {
         domains: async (member) => {
             const { rows } = await db.query(GET_MEMBER_DOMAINS, [member.id]);
             return rows;
+        },
+        hasDomains: async (member) => {
+            let hasDomains = false;
+            const { rows } = await db.query(HAS_DOMAIN, [member.id]);
+            if(rows.length)
+                if(parseInt(rows[0].exists) > 0)
+                    hasDomains = true;
+            return hasDomains;
         }
     },
 

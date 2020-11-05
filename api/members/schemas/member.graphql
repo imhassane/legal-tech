@@ -6,6 +6,7 @@ enum MemberType {
     LAWYER
     INTERN
     DEV
+    ALL
 }
 
 enum MemberPermissions {

@@ -68,6 +68,12 @@ const MEMBER_COMPANY = `
     ORDER BY end_date DESC
 `;
 
+const MEMBER_HAS_COMPANY = `
+    SELECT COUNT(*) AS exists
+    FROM tj_member_company
+    WHERE cre_id = $1
+`;
+
 module.exports = {
     Member: {
       async companies(member) {
@@ -98,7 +104,14 @@ module.exports = {
             out = rows.splice(1);
 
           return { current, out, all: [current, ...rows] };
-      }
+      },
+        async hasCompany(member) {
+          let hasCompany = false;
+          const { rows } = await pool.query(MEMBER_HAS_COMPANY, [member.id]);
+          if(rows.length && parseInt(rows[0].exists) > 0)
+              hasCompany = true;
+          return hasCompany;
+        }
     },
     Company: {
       async members(company, {start, limit}) {
@@ -132,7 +145,7 @@ module.exports = {
             return member;
         });
         return { current, out, all: rows};
-      }
+      },
     },
     Query: {
         async companies(_, {start, limit}) {
